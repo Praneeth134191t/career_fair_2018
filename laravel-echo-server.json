@@ -1,0 +1,24 @@
+{
+	"authHost": null,
+	"authEndpoint": "/broadcasting/auth",
+	"clients": [
+		{
+			"appId": "5d01cbb65d67aec1",
+			"key": "c163bce570373b18b93e05de68ea8ef2"
+		}
+	],
+	"database": "redis",
+	"databaseConfig": {
+		"redis": {},
+		"sqlite": {
+			"databasePath": "/database/laravel-echo-server.sqlite"
+		}
+	},
+	"devMode": true,
+	"host": null,
+	"port": "6001",
+	"protocol": "http",
+	"socketio": {},
+	"sslCertPath": "",
+	"sslKeyPath": ""
+}
