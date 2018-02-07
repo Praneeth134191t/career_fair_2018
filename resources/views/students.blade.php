@@ -53,13 +53,16 @@
 
 <div class="container" style="padding-top: 72px">
     <div class="panel panel-default">
-        <div id="student" class="panel-body">
+        <div id="studentn" class="panel-body">
+            <div style="text-align: right; padding-right: 20px">
+            <a style="color: #00b0ff; float: right" class="btn btn-raised btn-xs " href="{{route('students_1')}}">Batch 12</a><button class="btn btn-danger"></button>    
+        </div>
             <div style="text-align: right; padding-right: 20px">{{ $students->links() }}</div>
             <div id="student-list" class="list-group">
                 @foreach($students as $student)
                     <div class="item">
                         <div class="list-group-item">
-                            <div class="row-picture" style="background: url(/profilepics/{{$student->profile_img}}) no-repeat; background-size: 100%;">
+                            <div class="row-picture" style="background: url(/profilepics_13/{{$student->profile_img}}) no-repeat; background-size: 100%;">
                             </div>
                             <div class="row-content">
                                 <span hidden class="std_index">{{$student->index}}</span>

@@ -23,37 +23,46 @@ class UserController extends Controller{
 
     public function getAddUserProfileDetails()
     {
-        $files = File::allFiles(public_path().'/profilepics/');
-
-        $thumbs = [];
-        foreach ($files as $file) {
-            $filename = $file->getFilename();
-            if(substr( $filename, 0, 3 ) === "TN_" || substr( $filename, 0, 3 ) === "DF_"){
-                array_push($thumbs,$file->getFilename());
+        
+        if(substr(Auth::user()->name, 0, 2 ) === "12"){
+            $files = File::allFiles(public_path().'/profilepics/');
+            $thumbs = [];
+            foreach ($files as $file) {
+                $filename = $file->getFilename();
+                if(substr( $filename, 0, 3 ) === "TN_" || substr( $filename, 0, 3 ) === "DF_"){
+                    array_push($thumbs,$file->getFilename());
+                }
             }
+            $thumbs = array_values(array_sort($thumbs, function ($value) {
+                return $value;
+            }));
         }
-
-        $thumbs = array_values(array_sort($thumbs, function ($value) {
-            return $value;
-        }));
-
+        if(substr(Auth::user()->name, 0, 2 ) === "13")
+        {
+            $thumbs=File::exists(public_path().'/profilepics_13/'.Auth::user()->name.'.jpg')?Auth::user()->name.'.jpg':'default.jpg';
+        }    
         return view('user-profile.add_user_profile_details',['thumbs'=>$thumbs]);
     }
 
     public function getEditProfileDetails(){
-        $files = File::allFiles(public_path().'/profilepics/');
-
-        $thumbs = [];
-        foreach ($files as $file) {
-            $filename = $file->getFilename();
-            if(substr( $filename, 0, 3 ) === "TN_" || substr( $filename, 0, 3 ) === "DF_"){
-                array_push($thumbs,$file->getFilename());
+        
+        if(substr(Auth::user()->name, 0, 2 ) === "12"){
+            $files = File::allFiles(public_path().'/profilepics/');
+            $thumbs = [];
+            foreach ($files as $file) {
+                $filename = $file->getFilename();
+                if(substr( $filename, 0, 3 ) === "TN_" || substr( $filename, 0, 3 ) === "DF_"){
+                    array_push($thumbs,$file->getFilename());
+                }
             }
+            $thumbs = array_values(array_sort($thumbs, function ($value) {
+                return $value;
+            }));
         }
-        $thumbs = array_values(array_sort($thumbs, function ($value) {
-            return $value;
-        }));
-
+        if(substr(Auth::user()->name, 0, 2 ) === "13")
+        {
+            $thumbs=File::exists(public_path().'/profilepics_13/'.Auth::user()->name.'.jpg')?Auth::user()->name.'.jpg':'default.jpg';
+        } 
         $profile = Auth::user()->profile;
         return view('user-profile.edit_user_profile_details',['thumbs'=>$thumbs,'profile'=>$profile]);
     }
@@ -69,13 +78,14 @@ class UserController extends Controller{
             'firstName' => 'required',
             'lastName' => 'required',
             'phone' => 'required',
-            'linkedin' => 'active_url',
-            'cv_link' =>  'required|active_url',
+            'linkedin' => 'required',
+            'cv_link' =>  'required',
             'objective' => 'required|min:50|max:500',
             'techskills' => 'required',
             'job_status' => 'required|in:available,hired'
         ],$messages);
 
+        Auth::user()->update(['status'=>'active']);
         $firstName = $request['firstName'];
         $lastName = $request['lastName'];
         $phone = $request['phone'];
@@ -107,7 +117,6 @@ class UserController extends Controller{
         }
 
         $profile->save();
-
         return redirect()->route('home',['profileDetails'=> $profile]);
     }
 
@@ -168,5 +177,24 @@ class UserController extends Controller{
 //        $post->body = $request['body'];
 //        $post->update();
 //        return response()->json(['new_body'=> $post->body],200);
+    }
+
+    public function postChangePassword(Request $request)
+    {
+        $user = Auth::user();
+        $this->validate($request,[
+            'password' => 'required|min:6|max:255|confirmed',
+            'password_confirmation' => 'required',
+        ]);
+
+        $user->password = bcrypt($request->get('password'));
+        $user->status = 'active';
+
+        $user->save();
+
+        activity('set_password')
+            ->causedBy($user)
+            ->log($user->name.' has set the password !');
+        return redirect()->route('home');
     }
 }

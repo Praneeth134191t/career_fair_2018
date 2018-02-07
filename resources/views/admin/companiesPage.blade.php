@@ -22,11 +22,10 @@
                 <a href="{{route('admin.companiesPage')}}">Add Companies</a>
             </li>
             <li>
-                <a href="#">Add Users manually</a>
+                <a href="{{route('admin.studentsPage')}}">Add Users manually</a>
             </li>
             <li>
-                <a href="{{ route('logout') }}"
-                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                <a href="{{ route('logout') }}">Logout</a>
             </li>
         </ul>
     </div>
@@ -43,24 +42,84 @@
     				
                     <form action="{{route('admin.addNewCompany')}}" method="post" role="form">
                         {{ csrf_field() }}
-                    	<div class="form-group">
+                    	<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                     		<label for="">Company name</label>
-                    		<input type="text" class="form-control" name="name" id="" placeholder="Google Inc.">
+                    		<input type="text" class="form-control" name="name" id="name" placeholder="Google Inc." value="{{old('name')}}">
+                            @if ($errors->has('name'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
                     	</div>
 
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('user_name') ? ' has-error' : '' }}">
+                            <label for="">User Name</label>
+                            <input type="text" class="form-control" name="user_name" id="user_name" placeholder="google_inc" value="{{old('user_name')}}">
+                            @if ($errors->has('user_name'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('user_name') }}</strong>
+                                </span>
+                            @endif                            
+                        </div>
+
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="">Email</label>
+                            <input type="text" class="form-control" name="email" id="email" placeholder="email" value="{{old('email')}}">
+                            @if ($errors->has('email'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif                            
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="">Password</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="">
+                            @if ($errors->has('password'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif                            
+                        </div>
+
+                        <div class="form-group{{ $errors->has('website') ? ' has-error' : '' }}">
                             <label for="">Website</label>
-                            <input type="text" class="form-control" name="website" id="" placeholder="https://google.com">
+                            <input type="text" class="form-control" name="website" id="website" placeholder="https://google.com" value="{{old('website')}}" >
+                            @if ($errors->has('website'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('website') }}</strong>
+                                </span>
+                            @endif                            
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
                             <label for="">Logo image link</label>
-                            <input type="text" class="form-control" name="logo" id="" placeholder="http://google.com/logo.jpg">
+                            <input type="text" class="form-control" name="logo" id="logo" placeholder="http://google.com/logo.jpg" value="{{old('logo')}}">
+                            @if ($errors->has('logo'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('logo') }}</strong>
+                                </span>
+                            @endif                            
                         </div>
-
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('sponsership_type') ? ' has-error' : '' }}">
+                            <label for="">Sponsership Type</label>
+                            <select class="form-control" id="sponsership_type" name="sponsership_type">
+                                <option value="None">None</option>
+                                <option  value="Strategic">Strategic Sponser</option>
+                                <option  value="Platinum">Platinum Sponser</option>
+                                <option  value="Gold">Gold Sponser</option>
+                                <option  value="Silver">Silber Sponser</option>
+                                <option  value="Co-Sponser">Co-Sponser</option>
+                            </select>                           
+                        </div>
+                        <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                             <label for="">Description</label>
-                            <textarea class="form-control" name="description" placeholder="Description" style="width: 100%"></textarea>
+                            <textarea class="form-control" name="description" placeholder="Description" style="width: 100%" value="{{old('description')}}"></textarea>
+                            @if ($errors->has('description'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('description') }}</strong>
+                                </span>
+                            @endif                            
                         </div>
 
                         <input type="submit" style="display:none" />
@@ -85,6 +144,7 @@
                 		<tr>
                 			<th>name</th>
                 			<th>logo</th>
+                            <th>status</th>
                 			<th>description</th>
                 			<th style="
                 			text-align: right">#</th>
@@ -101,11 +161,17 @@
                                     <img src="{{$company->logo}}" alt="{{$company->name}}-logo">
                                 </div>
                             </td>
+                            <td>
+                                <a target="_blank" href="#">{{$company->status}}</a>    
+                            </td>
                 			<td width="60%">
                                 <textarea class="form-control" readonly style="width: 100%">{{$company->description}}</textarea>
                             </td>
                             <td style="text-align: right; vertical-align: middle">
                                 <a href="{{route('admin.deleteCompany',[$company->id])}}" onclick="return confirm('Do want to delete \'{{$company->name}}\' ?')" type="button" class="btn btn-danger btn-xs">Delete</a>
+                            </td>
+                            <td style="text-align: right; vertical-align: middle">
+                                <a href="{{route('admin.getEditCompany',[$company->id])}}" type="button" class="btn btn-danger btn-xs">Update</a>
                             </td>
                 		</tr>
                     @endforeach

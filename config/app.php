@@ -14,7 +14,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'FIT-Career Fair 2k17',
+    'name' => 'FIT-Career Fair 2k18',
 
     /*
     |--------------------------------------------------------------------------

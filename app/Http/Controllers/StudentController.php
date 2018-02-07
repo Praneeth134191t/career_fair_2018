@@ -17,8 +17,16 @@ class StudentController extends Controller
 {
     public function index(Request $request){
         if($request->has('q')){
-            $profiles = Profile::search($request->get('q'))->paginate(270);
+            // return User::where('status','active')->pluck('id')->toArray();
+            $ids=[];
+            $pros = Profile::search($request->get('q'))->get();//paginate(270);
 
+            foreach ($pros as $key => $value) {
+                if($value['user']['status']=='active' && substr( $value['user']['name'], 0, 2 ) === "13"){
+                    array_push($ids, $value['id']);
+                }
+            }
+            $profiles = Profile::whereIn('id',$ids)->paginate(270);
             //TODO: remove after real images are uploaded
             //$faker = Factory::create();
             for($i=0;$i<count($profiles);$i++){
@@ -30,10 +38,48 @@ class StudentController extends Controller
             $page_data = array(
                 'students' => $profiles
             );
-            return view('students', $page_data);
+            return view('students-13-new', $page_data);
         }else{
-            $profiles = Profile::orderBy('job_status')->orderBy('firstName')->paginate(10);
+            $profiles = Profile::whereIn('user_id',User::where([['status','active'],['name','like','13%']])->pluck('id')->toArray())->orderBy('firstName')->paginate(10);
+            //TODO: remove after real images are uploaded
+            //$faker = Factory::create();
+            for($i=0;$i<count($profiles);$i++){
+                $profiles[$i]->objective = str_limit($profiles[$i]->objective, $limit = 180, $end = '...');
+                $profiles[$i]->img = "/img/student.jpg"; //$faker->imageUrl(50, 50);
+                $profiles[$i]->index = $profiles[$i]->user->name;
+            }
 
+            $page_data = array(
+                'students' => $profiles
+            );
+            return view('students-13-new', $page_data);
+        }
+    }
+
+    public function index_1(Request $request){
+        if($request->has('q')){
+            $ids=[];
+            $pros = Profile::search($request->get('q'))->get();//paginate(270);
+
+            foreach ($pros as $key => $value) {
+                if($value['user']['status']=='active' && substr( $value['user']['name'], 0, 2 ) === "12"){
+                    array_push($ids, $value['id']);
+                }
+            }
+            $profiles = Profile::whereIn('id',$ids)->paginate(270);
+            
+            for($i=0;$i<count($profiles);$i++){
+                $profiles[$i]->objective = str_limit($profiles[$i]->objective, $limit = 180, $end = '...');
+                $profiles[$i]->img = "/img/student.jpg"; //$faker->imageUrl(50, 50);
+                $profiles[$i]->index = $profiles[$i]->user->name;
+            }
+
+            $page_data = array(
+                'students' => $profiles
+            );
+            return view('students-12-new', $page_data);
+        }else{
+            $profiles = Profile::whereIn('user_id',User::where([['status','active'],['name','like','12%']])->pluck('id')->toArray())->orderBy('firstName')->paginate(10);
 
             //TODO: remove after real images are uploaded
             //$faker = Factory::create();
@@ -46,18 +92,17 @@ class StudentController extends Controller
             $page_data = array(
                 'students' => $profiles
             );
-            return view('students', $page_data);
+            return view('students-12-new', $page_data);
         }
-
-
-    }
+    }    
 
     public function viewStudent($id,$count='true', Request $request){
         $user = User::where('name', $id)->first();
         $profile = $user->profile;
         $profile->index = $user->name;
-        $profile->profile_img = Str::substr($profile->profile_img,3);
-
+        if(substr($profile->index, 0, 2) === "12"){
+            $profile->profile_img = Str::substr($profile->profile_img,3);
+        }
         $dt = Carbon::now()->subSeconds(Config::get('app.broadcasting_block_time'));
 
         $lastFromThisIP = Activity::where('created_at','>=',$dt)->where('description',$request->ip())->where('causer_id',$user->id)->first();
@@ -70,6 +115,6 @@ class StudentController extends Controller
             event(new CFActivities());
         }
 
-        return view('publicProfile',["profileDetails"=>$profile]);
+        return view('publicProfileModal',["profileDetails"=>$profile]);
     }
 }

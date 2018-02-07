@@ -22,11 +22,10 @@
                 <a href="{{route('admin.companiesPage')}}">Add Companies</a>
             </li>
             <li>
-                <a href="#">Add Users manually</a>
+                <a href="{{route('admin.studentsPage')}}">Add Users manually</a>
             </li>
             <li>
-                <a href="{{ route('logout') }}"
-                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                <a href="{{ route('logout') }}">Logout</a>
             </li>
         </ul>
     </div>

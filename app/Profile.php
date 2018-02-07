@@ -12,6 +12,8 @@ class Profile extends Model
 
     protected $appends = ["index"];
 
+    protected $fillable = ['firstName', 'lastName', 'phone', 'degree','job_status','linkedinLink','profile_img','user_id','objective','techs'];
+
     public function getIndexAttribute()
     {
         return $this->user->name;
@@ -20,9 +22,9 @@ class Profile extends Model
     public function toSearchableArray()
     {
         $array = $this->toArray();
-
+        
         $array["index"] = $this->user->name;
-        // Customize array...
+        
 
         unset($array["user"]);
 

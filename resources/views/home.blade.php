@@ -24,7 +24,11 @@
                                         <div class="row" style="margin-left: 10px;">
                                         <h3><div id="firstName">{{ $profileDetails->firstName }}</div> <div id="lastName"> {{$profileDetails->lastName}}</div></h3>
                                         </div>
+                                        @if(substr(Auth::user()->name, 0, 2 ) === "12")
                                         <img src="/profilepics/{{$profileDetails->profile_img}}" class="img-responsive profile_img">
+                                        @else
+                                        <img src="/profilepics_13/{{$profileDetails->profile_img}}" class="img-responsive profile_img">
+                                        @endif
                                     </div>
 
                                     <div class="col-md-7 col-md-offset-1" style="margin-top: 70px;">

@@ -59,37 +59,30 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                         @else
                             @if(!(Auth::user()->role == 'admin'))
-                                <li>
+                                
                                 @if(\Illuminate\Support\Facades\Auth::user()->profile)
-                                        <a href="{{route('getEditProfileDetails')}}?link={{\Illuminate\Support\Facades\Auth::user()->profile->cv_link}}" class="asd" style="color: #ffffff">Edit Details</a>
+                                        <li><a href="{{route('getEditProfileDetails')}}" class="asd" style="color: #ffffff">Edit Details</a>
+                                        </li>
+                                        <li><a href="{{route('getChangeProfilePassword')}}" class="asd" style="color: #ffffff">Change Password</a>
+                                        </li>     
                                 @endif
-                                </li>
+                                @if(\Illuminate\Support\Facades\Auth::user()->company)
+                                        <li>
+                                            <a href="{{route('company.edit_details')}}" class="asd" style="color: #ffffff">Edit Details</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('company.getAddVacancies')}}" class="asd" style="color: #ffffff">Add New Vacancies</a>
+                                        </li>
+                                @endif
                             @endif
-                            <li class="dropdown">
-                                <a href="{{ url('home') }}" class="dropdown-toggle" data-toggle="dropdown" style="color: #ffffff" role="button">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-
-                                    <li>
-                                    <a href="{{ route('home') }}">
-                                        {{ Auth::user()->name }}</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
+                            <li>
+                                <a href="{{ route('root') }}" class="asd" style="color: #ffffff">Home</a>
                             </li>
+                            @if(Auth::user()->role != 'admin')
+                            <li>
+                                <a href="{{ route('logout') }}" class="asd" style="color: #ffffff">Logout</a>
+                            </li>    
+                            @endif
                         @endif
                     </ul>
                 </div>

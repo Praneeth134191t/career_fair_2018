@@ -60,9 +60,22 @@ use \Illuminate\Routing;
                     </div>
                 </div>
             </div>
+            <div class="navbar-form navbar-left hidden-sm hidden-xs" {{ !Route::is('students_1') ? "style=display:none": ""}}>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <i class="fa fa-search"></i>
+                        <input type="text" value="{{app('request')->input('q')}}" id="q" style="width:30vw;" class="form-control col-sm-8 query" placeholder="Search">
+                        <img class="searching_ico" style="display: none" src="/img/ajaxloading.gif" width="30px">
+                    </div>
+                </div>
+            </div>
             <ul class="nav navbar-nav navbar-right">
                 <li class="{{ Route::is('companies') ? 'active' : '' }}"><a href="{{route('companies')}}">Companies</a></li>
-                <li class="{{ Route::is('students') ? 'active' : '' }}"><a href="{{route('students')}}">Students</a></li>
+                @if(Route::is('students') || Route::is('students_1'))
+                <li class="active"><a href="{{route('students')}}">Students</a></li>
+                @else
+                <li class=""><a href="{{route('students')}}">Students</a></li>
+                @endif
                 @if (Route::has('login'))
 
                     @if (Auth::check())

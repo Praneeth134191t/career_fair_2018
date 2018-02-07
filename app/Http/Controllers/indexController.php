@@ -18,9 +18,9 @@ class indexController extends Controller
 //            "img" => $img
 //        );
 
-        $data = Activity::inLog('profile_view')->orderBy('created_at','desc')->paginate(30);
+        //$data = Activity::inLog('profile_view')->orderBy('created_at','desc')->paginate(30);
 
 
-        return view('welcome',['data'=>$data]);
+        return view('welcome_new');
     }
 }

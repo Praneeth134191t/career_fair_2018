@@ -18,25 +18,7 @@
                 </div>
                 <div class="panel-body">
                 <form method="post" enctype="multipart/form-data" action="{{ route('postProfileDetails') }}">
-
-                    <div class="form-group">
-                        <label for="firstName"><a type="button" target="_blank" href="https://script.google.com/macros/s/AKfycbwm7YdFs-y5_MiPoeZcnUumQvcMh5VRPSdWFtk1CxJ7zq5TWQfH/exec" class="btn btn-default">Upload your CV</a></label>
-                        <div>
-                            @if(isset($_GET['link']))
-                                <a type="button" target="_blank" href="{{$_GET['link']}}">CV Link</a>
-                                <input type="text" readonly class="form-control" id="cv_link" value="{{ old('cv_link',$_GET['link']) }}" name="cv_link">
-                            @else
-                                <h5 style="color: #aa0645">Your cv link is not set, Please upload your cv to drive..</h5>
-                            @endif
-                        </div>
-                    </div>
-
-                    @if(!isset($_GET['link']))
-                        for continue please upload ur cv first
-                    @endif
-
-                    @if(isset($_GET['link']))
-
+                    @if(is_array($thumbs))
                     <div class="col-md-2 selected_img">
                         <img src="/profilepics/{{old('profile_img',$thumbs[0])}}" alt="">
                     </div>
@@ -60,7 +42,14 @@
 
                         <small id="emailHelp" class="form-text text-muted">Please select your one.</small>
                     </div>
-
+                    @else
+                    <input type="hidden" class="form-control" id="profile_img" name="profile_img" value="{{$thumbs}}">
+                    <div class="row">
+                    <div class="col-md-2 selected_img">
+                        <img src="/profilepics_13/{{old('profile_img',$thumbs)}}" alt="">
+                    </div>
+                    </div>
+                    @endif
                     <div class="form-group{{ $errors->has('job_status') ? ' has-error' : '' }}">
                         <label for="exampleSelect1">Are you available or hired ?</label>
                         <select class="form-control" id="job_status" name="job_status">
@@ -68,10 +57,21 @@
                             <option {{old('job_status')=="hired"? 'selected':''}} value="hired">Hired</option>
                         </select>
                         @if ($errors->has('job_status'))
-                            <span class="help-block">
-                        <strong>{{ $errors->first('job_status') }}</strong>
-                    </span>
+                        <span class="help-block">
+                            <strong>{{ $errors->first('job_status') }}</strong>
+                        </span>
                         @endif
+                    </div>
+
+                    <div class="form-group{{ $errors->has('cv_link') ? ' has-error' : '' }}">
+                        <label for="cv_link">Cv Link</label>
+                        <input type="text" class="form-control" id="cv_link" aria-describedby="emailHelp" placeholder="Add cv link here" value="{{ old('cv_link') }}" name="cv_link">
+                        @if ($errors->has('cv_link'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('cv_link') }}</strong>
+                            </span>
+                        @endif
+                        <small id="emailHelp" class="form-text text-muted">Your cv link will be shared publicly.</small>
                     </div>
 
                     <div class="form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">
@@ -87,7 +87,7 @@
 
                     <div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
                         <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" aria-describedby="emailHelp" placeholder="Enter email" value="{{ old('lastName') }}" name="lastName">
+                        <input type="text" class="form-control" id="lastName" aria-describedby="emailHelp" placeholder="Enter last name" value="{{ old('lastName') }}" name="lastName">
                         @if ($errors->has('lastName'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('lastName') }}</strong>
@@ -153,7 +153,6 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
                     <input type="hidden" name="_token" value="{{Session::token()}}">
                 </div>
-                @endif
 
                 </form>
 

@@ -18,21 +18,9 @@
                 </div>
                 <div class="panel-body">
                 <form method="post" enctype="multipart/form-data" action="{{ route('postProfileDetails') }}">
-
-                    <div class="form-group">
-                        <label for="firstName"><a type="button" target="_blank" href="https://script.google.com/macros/s/AKfycbzWfOvMoHodSJpuGUisV32LX6M8iiYb4KHcHJ8Okkww8XBfaxs/exec" class="btn btn-default">Upload your CV</a></label>
-                        <div>
-                            @if(isset($_GET['link']))
-                                <a type="button" target="_blank" href="{{$_GET['link']}}">CV Link</a>
-                                <input type="text" readonly class="form-control" id="cv_link" value="{{ old('cv_link',$_GET['link']) }}" name="cv_link">
-                            @else
-                                <h5 style="color: #aa0645">Your cv link is not set, Please upload your cv to drive..</h5>
-                            @endif
-                        </div>
-                    </div>
-
+                    @if(is_array($thumbs))
                     <div class="col-md-2 selected_img">
-                        <img src="/profilepics/{{$profile->profile_img}}" alt="">
+                        <img src="/profilepics/{{old('profile_img',$thumbs[0])}}" alt="">
                     </div>
 
                     <div class="form-group col-md-10">
@@ -40,9 +28,11 @@
 
                         <select id="select_profile_pic" class="image-picker show-html" name="profile_img">
                             @foreach($thumbs as $thumb)
-                                @if($profile->profile_img == $thumb)
-                                <img src="/profilepics/{{$thumb}}" alt="">
-                                <option data-img-src="/profilepics/{{$thumb}}" selected data-img-alt="{{$thumb}}" value="{{$thumb}}">{{$thumb}}</option>
+
+
+                                @if(old('profile_img') == $thumb)
+                                    <img src="/profilepics/{{$thumb}}" alt="">
+                                    <option data-img-src="/profilepics/{{$thumb}}" selected data-img-alt="{{$thumb}}" value="{{$thumb}}">{{$thumb}}</option>
                                 @else
                                     <img src="/profilepics/{{$thumb}}" alt="">
                                     <option data-img-src="/profilepics/{{$thumb}}" data-img-alt="{{$thumb}}" value="{{$thumb}}">{{$thumb}}</option>
@@ -52,6 +42,14 @@
 
                         <small id="emailHelp" class="form-text text-muted">Please select your one.</small>
                     </div>
+                    @else
+                    <input type="hidden" class="form-control" id="profile_img" name="profile_img" value="{{$thumbs}}">
+                    <div class="row">
+                        <div class="col-md-2 selected_img">
+                            <img src="/profilepics_13/{{old('profile_img',$thumbs)}}" alt="">
+                        </div>
+                    </div>
+                    @endif
                     <div class="form-group{{ $errors->has('job_status') ? ' has-error' : '' }}">
                         <label for="exampleSelect1">Are you available or hired ?</label>
                         <select class="form-control" id="job_status" name="job_status">
@@ -63,6 +61,16 @@
                             <strong>{{ $errors->first('job_status') }}</strong>
                         </span>
                         @endif
+                    </div>
+                    <div class="form-group{{ $errors->has('cv_link') ? ' has-error' : '' }}">
+                        <label for="cv_link">Cv Link</label>
+                        <input type="text" class="form-control" id="cv_link" aria-describedby="emailHelp" placeholder="Add cv link here" value="{{ old('cv_link',$profile->cv_link) }}" name="cv_link">
+                        @if ($errors->has('cv_link'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('cv_link') }}</strong>
+                            </span>
+                        @endif
+                        <small id="emailHelp" class="form-text text-muted">Your cv link will be shared publicly.</small>
                     </div>
 
                     <div class="form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">

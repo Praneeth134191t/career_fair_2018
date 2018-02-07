@@ -25,12 +25,18 @@ class HomeController extends Controller
     public function index()
     {
         //dd(Auth::user()->role);
-        if(Auth::user()->status == 'first_time' && Auth::user()->role != 'admin'){
-            return redirect(route('register'));
-        }elseif(Auth::user()->role == 'admin'){
-            return redirect(route('admin.dashboard'));
+        if(Auth::user()->status == 'first_time' && Auth::user()->role == 'company'){
+            return redirect(route('get_change_company_password'));
         }
-
+        elseif(Auth::user()->role == 'company' && Auth::user()->company->status=='deactive'){
+            return redirect(route('company.edit_details'));
+        }
+        elseif(Auth::user()->role == 'company'){
+            return redirect(route('company.details'));
+        }
+        elseif(Auth::user()->role == 'admin'){
+            return redirect(route('admin.dashboard'));
+        }    
         $profile = Auth::user()->profile;
         if(is_null($profile)){
             return redirect(route('addProfileDetails'));
