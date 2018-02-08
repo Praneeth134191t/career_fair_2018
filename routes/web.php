@@ -24,15 +24,7 @@ $this->get('/login', function(){
 
 Route::group(['prefix' => 'careers'], function()
 {
-    // Your routes
 
-//TODO: Create a group with prefix /careers
-    $this->get('/tst',function(){
-        return view('welcome_new');
-    });
-    $this->get('/tst_student',function(){
-        return view('students-12-new');
-    });
     $this->get('/', 'indexController@index')->name('root');
 
     $this->get('/driveLink', function () {
@@ -66,8 +58,8 @@ Route::group(['prefix' => 'careers'], function()
 
     $this::get('/home', 'HomeController@index')->name('home');
 
-    $this::get('/callback/{provider}', 'SocialAuthController@callback');
-    $this::get('/redirect/{provider}', 'SocialAuthController@redirect');
+    // $this::get('/callback/{provider}', 'SocialAuthController@callback');
+    // $this::get('/redirect/{provider}', 'SocialAuthController@redirect');
 
 
     $this::group(['middleware' => ['auth']], function () {
@@ -85,6 +77,11 @@ Route::group(['prefix' => 'careers'], function()
             $this->get('/ex_profiles','AdminController@exportProfileData')->name('admin.exportProfiles');
             $this->get('/getEditCompany/{id}','AdminController@getEditCompany')->name('admin.getEditCompany');
             $this->post('/editCompany/{id}','AdminController@editCompany')->name('admin.editCompany');
+            $this->get('register', function () {
+                return view('auth.register');
+            })->name('register');
+
+            $this->post('register','RegisterStudentController@update')->name('register');
 
             
         });
@@ -102,25 +99,21 @@ Route::group(['prefix' => 'careers'], function()
            //$this->get('/company/{id}','CompanyController@viewCompany')->name('company_view');
            $this->get('change_password', 'CompanyController@getChangePassword')->name('get_change_company_password'); 
            $this->post('set_password','CompanyController@setPassword')->name('set_company_password'); 
-        });    
-        $this->get('register', function () {
-            return view('auth.register');
-        })->name('register');
+        });
+        $this::group(['middleware' => ['hasProfile']], function () {            
+            /*
+             * User Profile related Routes
+             * */
 
-        $this->post('register','RegisterStudentController@update')->name('register');
-
-        /*
-         * User Profile related Routes
-         * */
-
-        $this->get('addprofiledetails', 'UserController@getAddUserProfileDetails')->name('addProfileDetails');
-        $this->get('editProfile', 'UserController@getEditProfileDetails')->name('getEditProfileDetails');
-        $this->post('profiledetails', 'UserController@postAddUserProfileDetails')->name('postProfileDetails');
-        $this->post('edit', 'UserController@postEditProfile')->name('profile.edit');
-        $this->get('/change_password',function(){
-            return view('auth.passwords.change');
-        })->name('getChangeProfilePassword');
-        $this->post('/change_password','UserController@postChangePassword')->name('postChangeProfilePassword');   
+            $this->get('addprofiledetails', 'UserController@getAddUserProfileDetails')->name('addProfileDetails');
+            $this->get('editProfile', 'UserController@getEditProfileDetails')->name('getEditProfileDetails');
+            $this->post('profiledetails', 'UserController@postAddUserProfileDetails')->name('postProfileDetails');
+            $this->post('edit', 'UserController@postEditProfile')->name('profile.edit');
+            $this->get('/change_password',function(){
+                return view('auth.passwords.change');
+            })->name('getChangeProfilePassword');
+            $this->post('/change_password','UserController@postChangePassword')->name('postChangeProfilePassword');  
+        });     
 
     }); 
 

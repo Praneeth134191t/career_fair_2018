@@ -13,7 +13,7 @@ class RegisterStudentController extends Controller
         $user = Auth::user();
 
         $validator =  Validator::make($request->all(), [
-            'index' => 'regex:/^\d{6}\w$/',
+            //'index' => 'regex:/^\d{6}\w$/',
             'password' => 'required|min:6|max:255|confirmed',
             'password_confirmation' => 'required',
         ]);

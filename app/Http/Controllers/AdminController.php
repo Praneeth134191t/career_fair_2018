@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\FitCarearFair;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 
@@ -55,8 +54,6 @@ class AdminController extends Controller
             'sponsership_type' => 'required',
             'description' => 'required|min:50|max:500'
         ]);
-        Mail::to($request->email)->send(new FitCarearFair($request->password,$request->user_name));
-        $user=User::create(['name'=>$request->user_name,'email'=>$request->email,'password'=>bcrypt($request->password),'role'=>'company']);
         $company = $user->company()->create($request->all());
         return redirect(route('admin.companiesPage'));
     }
