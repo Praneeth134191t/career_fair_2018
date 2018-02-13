@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 use Spatie\Activitylog\Models\Activity;
 
 class StudentController extends Controller
@@ -40,7 +41,7 @@ class StudentController extends Controller
             );
             return view('students-13-new', $page_data);
         }else{
-            $profiles = Profile::whereIn('user_id',User::where([['status','active'],['name','like','13%']])->pluck('id')->toArray())->orderBy('firstName')->paginate(10);
+            $profiles = Profile::whereIn('user_id',User::where([['status','active'],['name','like','13%']])->pluck('id')->toArray())->orderBy('job_status')->orderBy('firstName')->paginate(10);
             //TODO: remove after real images are uploaded
             //$faker = Factory::create();
             for($i=0;$i<count($profiles);$i++){
@@ -79,7 +80,7 @@ class StudentController extends Controller
             );
             return view('students-12-new', $page_data);
         }else{
-            $profiles = Profile::whereIn('user_id',User::where([['status','active'],['name','like','12%']])->pluck('id')->toArray())->orderBy('firstName')->paginate(10);
+            $profiles = Profile::whereIn('user_id',User::where([['status','active'],['name','like','12%']])->pluck('id')->toArray())->orderBy('job_status')->orderBy('firstName')->paginate(10);
 
             //TODO: remove after real images are uploaded
             //$faker = Factory::create();
@@ -102,6 +103,9 @@ class StudentController extends Controller
         $profile->index = $user->name;
         if(substr($profile->index, 0, 2) === "12"){
             $profile->profile_img = Str::substr($profile->profile_img,3);
+        }
+        if(substr($profile->index, 0, 2) === "13"){
+            $profile->profile_img = File::exists(public_path().'/profilepics_13_2/'.$profile->profile_img)?$profile->profile_img:'default.jpg';
         }
         $dt = Carbon::now()->subSeconds(Config::get('app.broadcasting_block_time'));
 

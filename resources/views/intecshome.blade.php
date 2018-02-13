@@ -80,7 +80,8 @@
         <!-- Career Fair -->
         <article id="career-fair">
             <h2 class="major">FIT Future Careers</h2>
-            <span class="image main"><img src="http://i.imgur.com/oBatHFc.jpg" alt="FIT CodeRush Participants" /></span>
+            <!-- src="http://i.imgur.com/oBatHFc.jpg" -->
+            <span class="image main"><img src="{{ url('/images_2018/logo.png') }}" alt="FIT CodeRush Participants" /></span>
             <p class="center-item">The Annual Career Fair of the Faculty of Information Technology - FIT Future Careers</p>
             <p class="center-item">Looking to Hire? Visit Our Career Fair Page</p>
             <ul class="actions center-item">
@@ -103,7 +104,7 @@
 
     <!-- Footer -->
     <footer id="footer">
-        <p class="copyright">&copy; INTECS 2017</p>
+        <p class="copyright">&copy; INTECS 2018</p>
         <ul class="icons center-item">
             <li>
                 <a href="https://www.facebook.com/pg/intecs.lk/" class="icon fa-facebook"><span class="label">INTECS Facebook Page</span></a>

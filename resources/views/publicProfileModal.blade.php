@@ -20,7 +20,7 @@
 								{{$profileDetails->objective}}</h4>
 							<h4>
 								@foreach(explode(",", $profileDetails->techs) as $tech)
-                                    <span class="label label-default skills">{{$tech}}</span>
+                                    <span class="label label-default skills" style="display: inline-flex!important">{{$tech}}</span>
                                 @endforeach
 							</h4>
 							<br>

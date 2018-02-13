@@ -45,7 +45,7 @@
                                     </h4>
                                     <h4>
                                         @foreach(explode(",", $student->techs) as $tech)
-                                            <span class="label label-default skills">{{$tech}}</span>
+                                            <span class="label label-default skills" style="display: inline-flex!important">{{$tech}}</span>
                                         @endforeach
                                     </h4>
                                     <div class="pull-right">
@@ -57,11 +57,15 @@
                             </div>
                         </div>
                         @endforeach
+                        <div class="col-md-12 section-heading text-center to-animate">
+                            <ul class="pagination" style="font-size: 0.7em">
+                                {{ $students->links() }}
+                            </ul>
+                        </div>
                         </div>
                         </div>
                 </div>
-            </div>
-        </div>
+ 
     </section>
     <div class="moreDetails" style="display: ;">
     </div>     
@@ -124,7 +128,7 @@
                                 var techArray = element["techs"].split(',');
                                 var techhtml = '';
                                 techArray.forEach(function(tech) {
-                                    techhtml = techhtml.concat('<span class="label label-default skills">'+tech+'</span>'+' ');
+                                    techhtml = techhtml.concat('<span class="label label-default skills" style="display: inline-flex!important">'+tech+'</span>'+' ');
                                 });
                                    
                                 

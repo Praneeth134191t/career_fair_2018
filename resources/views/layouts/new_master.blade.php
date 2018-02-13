@@ -69,7 +69,8 @@
                     <a class="navbar-brand" href="{{route('root')}}"><img src="{{ url('/images_2018/logo.png') }}" width="200px" alt=""></a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <div class="nav navbar-nav navbar-right" style="font-size: 0.7em; border-bottom: 1px solid black;margin-top: 5px">Faculty of Information Technology - University of Moratuwa</div>
+                    <div class="nav navbar-nav navbar-right hidden-xs" style="font-size: 0.7em; border-bottom: 1px solid black;margin-top: 5px"><a style="text-decoration: none; color: grey"
+                        href="https://www.mrt.ac.lk/web/itfac" class="external">Faculty of Information Technology - University of Moratuwa</a></div>
                     <br>
                     <ul class="nav navbar-nav navbar-left">
 
@@ -79,7 +80,7 @@
                         <li><a href="" data-nav-section="explore" ><span>About us</span></a></li>
                         <!-- <li><a href="" data-nav-section="social" ><span>Social</span></a></li> -->
                         <li><a href="" data-nav-section="talents" ><span>Talents</span></a></li>
-                        <li><a href="" data-nav-section="sponsors"><span>Sponsors</span></a></li>
+                        <!-- <li><a href="" data-nav-section="sponsors"><span>Sponsors</span></a></li> -->
                         @endif
                     </ul>
                     <ul class="nav navbar-nav navbar-right">

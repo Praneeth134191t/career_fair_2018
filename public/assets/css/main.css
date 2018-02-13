@@ -334,7 +334,7 @@
 
 	label {
 		color: #ffffff;
-		display: block;
+		display: inline-flex;
 		font-size: 0.8rem;
 		font-weight: 300;
 		letter-spacing: 0.2rem;

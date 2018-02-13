@@ -14,7 +14,7 @@
 <section id="fh5co-explore" data-section="explore">
         <div class="container">
             <br><br>
-                <h2 class="to-animate-3 text-center">All Candidates of Batch 12</h2>
+                <h2 class="to-animate-3 text-center">All Candidates of Batch 13</h2>
             <div class="row">
                 <div class="col-md-12 section-heading text-center to-animate">
                     <input class="search-inbox query" value="{{app('request')->input('q')}}" id="q" type="text" placeholder="Search">
@@ -45,7 +45,7 @@
                                     </h4>
                                     <h4>
                                         @foreach(explode(",", $student->techs) as $tech)
-                                            <span class="label label-default skills">{{$tech}}</span>
+                                            <span class="label label-default skills" style="display: inline-flex!important">{{$tech}}</span>
                                         @endforeach
                                     </h4>
                                     <div class="pull-right">
@@ -57,11 +57,14 @@
                             </div>
                         </div>
                         @endforeach
+                        <div class="col-md-12 section-heading text-center to-animate">
+                            <ul class="pagination" style="font-size: 0.7em">
+                                {{ $students->links() }}
+                            </ul>
+                        </div>
                         </div>
                         </div>
                 </div>
-            </div>
-        </div>
     </section>
     <div class="moreDetails" style="display: ;">
     </div>     
@@ -124,7 +127,7 @@
                                 var techArray = element["techs"].split(',');
                                 var techhtml = '<h4>';
                                 techArray.forEach(function(tech) {
-                                    techhtml = techhtml.concat('<span class="label label-default skills">'+tech+'</span>'+' ');
+                                    techhtml = techhtml.concat('<span class="label label-default skills" style="display: inline-flex!important">'+tech+'</span>'+' ');
                                 });
                                 techhtml = techhtml.concat('</h4>');
 

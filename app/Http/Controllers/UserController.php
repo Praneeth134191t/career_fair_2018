@@ -157,7 +157,7 @@ class UserController extends Controller{
         $authenticatedUserID = Auth::user()->id;
         $profileOwnedUser = User::find($authenticatedUserID);
         $profile = $profileOwnedUser->profile;
-
+        $profile->profile_img = $request['profile_img'];
         $profile->firstName = $request['firstName'];
         $profile->lastName = $request['lastName'];
         $profile->phone = $request['phone'];

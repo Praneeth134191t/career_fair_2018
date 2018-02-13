@@ -146,7 +146,7 @@
     </section>
 
     <hr>
-    <section id="fh5co-sponsors" data-section="sponsors">
+<!--     <section id="fh5co-sponsors" data-section="sponsors">
         <div class="fh5co-sponsors">
             <div class="container">
                 <div class="row">
@@ -244,5 +244,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 @endsection

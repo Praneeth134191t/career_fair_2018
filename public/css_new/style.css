@@ -83,6 +83,10 @@ h1, h2, h3, h4, h5, h6 {
   #fh5co-header #navbar .navbar-right {
     margin-right: -15px;
   }
+  .navbar-collapse {
+    margin-top:50px;
+    background-color: white;
+  }
 }
 #fh5co-header #navbar li a {
   font-family: "PT Sans", Arial, serif;

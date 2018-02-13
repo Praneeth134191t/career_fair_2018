@@ -1,6 +1,8 @@
 /public/storage
 /public/hot
 /public/profilepics/*
+/public/profilepics_13/*
+/public/profilepics_13_2/*
 node_modules
 /storage/*.key
 /vendor

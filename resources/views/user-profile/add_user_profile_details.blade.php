@@ -50,6 +50,9 @@
                     </div>
                     </div>
                     @endif
+                    <br>
+                    <br>
+                    <br>
                     <div class="form-group{{ $errors->has('job_status') ? ' has-error' : '' }}">
                         <label for="exampleSelect1">Are you available or hired ?</label>
                         <select class="form-control" id="job_status" name="job_status">

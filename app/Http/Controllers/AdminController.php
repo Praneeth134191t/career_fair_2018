@@ -54,6 +54,7 @@ class AdminController extends Controller
             'sponsership_type' => 'required',
             'description' => 'required|min:50|max:500'
         ]);
+        $user=User::create(['name'=>$request->user_name,'email'=>$request->email,'password'=>bcrypt($request->password),'status'=>'first_time','role'=>'company']);
         $company = $user->company()->create($request->all());
         return redirect(route('admin.companiesPage'));
     }
@@ -115,7 +116,7 @@ class AdminController extends Controller
         ]);
 
         
-        $user=User::create(['name'=>$request->name,'email'=>null,'password'=>bcrypt($request->index),'role'=>'student']);
+        $user=User::create(['name'=>$request->name,'email'=>null,'password'=>bcrypt($request->name),'role'=>'student']);
         return redirect(route('admin.studentsPage'));
     }
 
