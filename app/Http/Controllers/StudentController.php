@@ -104,9 +104,9 @@ class StudentController extends Controller
         if(substr($profile->index, 0, 2) === "12"){
             $profile->profile_img = Str::substr($profile->profile_img,3);
         }
-        if(substr($profile->index, 0, 2) === "13"){
-            $profile->profile_img = File::exists(public_path().'/profilepics_13_2/'.$profile->profile_img)?$profile->profile_img:'default.jpg';
-        }
+        // if(substr($profile->index, 0, 2) === "13"){
+        //     $profile->profile_img = File::exists(public_path().'/profilepics_13_2/'.$profile->profile_img)?$profile->profile_img:'default.jpg';
+        // }
         $dt = Carbon::now()->subSeconds(Config::get('app.broadcasting_block_time'));
 
         $lastFromThisIP = Activity::where('created_at','>=',$dt)->where('description',$request->ip())->where('causer_id',$user->id)->first();

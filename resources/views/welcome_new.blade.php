@@ -1,11 +1,30 @@
 @extends('layouts.new_master')
 
 @section('header')
-
+        <!--grid-->
+        <link rel="stylesheet" type="text/css" href="{{asset('css_new/demo.css')}}" />
+        <noscript>
+            <link rel="stylesheet" type="text/css" href="{{asset('css_new/fallback.css')}}" />
+        </noscript>
+        <!--[if lt IE 9]>
+        <link rel="stylesheet" type="text/css" href="css/fallback.css" />
+        <![endif]-->
+        <!--end grid-->
 @endsection
 
 @section('content')
-        <section id="fh5co-home" data-section="home" style="background-image: url({{ url('/images_2018/full_image_3.jpg') }});" data-stellar-background-ratio="0.5">
+    <div id="ri-grid" style="position: absolute;z-index: -10;"  class="ri-grid ri-grid-size-1 ri-shadow hidden-xs" >
+        <img class="ri-loading-image" src="{{asset('images/loading.gif')}}"/>
+        <ul >
+            @foreach($data as $dat)
+            @if(file_exists(public_path('profilepics_13/'.$dat.'.jpg')))
+            <li><a href="#"><img src="{{asset('profilepics_13').'/'.$dat.'.jpg'}}"/></a></li>
+            @endif
+            @endforeach
+        </ul>
+    </div>
+
+<!--         <section id="fh5co-home" data-section="home" style="background-image: url({{ url('/images_2018/full_image_3.jpg') }});" data-stellar-background-ratio="0.5">
         <div class="gradient"></div>
         <div class="container">
             <div class="text-wrap">
@@ -14,6 +33,28 @@
                         <div class="col-md-8 col-md-offset-2">
                             <h1 class="to-animate">FIT Future Careers 2018</h1>
                             <h2 class="to-animate">The in-house recruitment program of the Faculty of Information Technology, University of Moratuwa!</h2>
+                            <div class="call-to-action">
+                                <a href="{{route('students')}}" class="demo to-animate">Students</a>
+                                <a href="{{route('companies')}}" class="demo to-animate">Companies</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <section id="fh5co-home"  data-section="home" data-stellar-background-ratio="0.5" style="background-color: rgba(0,30,140,0.7);" >
+
+        <div class="gradient visible-xs"></div>
+        <div class="container">
+
+            <div class="text-wrap">
+                <div class="text-inner">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2" >
+
+                            <h1 class="to-animate">FIT Future Careers 2018</h1>
+                            <h2 class="to-animate" style="font-weight: bold">The in-house recruitment program of the Faculty of Information Technology, University of Moratuwa!</h2>
                             <div class="call-to-action">
                                 <a href="{{route('students')}}" class="demo to-animate">Students</a>
                                 <a href="{{route('companies')}}" class="demo to-animate">Companies</a>
@@ -245,4 +286,35 @@
             </div>
         </div>
     </section> -->
+
+
+@endsection
+@section('scr')
+
+    
+        <script type="text/javascript">
+        $(function() {
+
+            $( '#ri-grid' ).gridrotator( {
+                rows : 5,
+                columns : 11,
+                animType        : 'slideRight,slideTop',
+                slideshow       : true,
+                interval        : 1000,
+                animSpeed       : 800,
+
+                w320 : {
+                    rows : 3,
+                    columns : 4
+                },
+                w240 : {
+                    rows : 3,
+                    columns : 3
+                },
+                nochange : [0,1,2,3],
+                preventClick : false
+            } );
+
+        });
+    </script>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\File;
 
 class indexController extends Controller
 {
@@ -19,8 +20,12 @@ class indexController extends Controller
 //        );
 
         //$data = Activity::inLog('profile_view')->orderBy('created_at','desc')->paginate(30);
-
-
-        return view('welcome_new');
+		$file=File::get(public_path('IT.txt'));
+    	$data_1=explode(',', $file);
+    	$file=File::get(public_path('ITM.txt'));
+    	$data_2=explode(',', $file); 
+    	$data=array_merge($data_1,$data_2);
+   		shuffle($data);
+        return view('welcome_new',['data'=>$data]);
     }
 }

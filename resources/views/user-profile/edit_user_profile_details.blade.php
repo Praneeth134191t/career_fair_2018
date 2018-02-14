@@ -46,7 +46,7 @@
                     <input type="hidden" class="form-control" id="profile_img" name="profile_img" value="{{$thumbs}}">
                     <div class="row">
                         <div class="col-md-2 selected_img">
-                            <img src="/profilepics_13/{{old('profile_img',$thumbs)}}" alt="">
+                            <img src="/profilepics_13/{{old('profile_img',$thumbs)}}" class="img-thumbnail" alt="">
                         </div>
                     </div>
                     @endif

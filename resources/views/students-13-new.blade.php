@@ -35,8 +35,11 @@
                         @foreach($students as $student)    
                         <div class="list-item to-animate">
                             <div class="row">
+                                @if(file_exists(public_path('profilepics_13/'.$student->profile_img)))
                                 <div class="col-lg-2"><img class="img-circle img-responsive center-block" src="{{asset('profilepics_13').'/'.$student->profile_img}}" alt=""></div>
-                                
+                                @else
+                                <div class="col-lg-2"><img class="img-circle img-responsive center-block" src="{{asset('profilepics_13').'/default.jpg'}}" alt=""></div>
+                                @endif
                                 <div class="col-lg-9">
 
                                     <h3>{{$student->firstName}} {{$student->lastName}}<span style="background-color: rgba(221, 17, 79, 0.93); font-size: small;">{{$student->job_status=='hired'?'&nbsp;HIRED&nbsp;':''}}</span></h3>

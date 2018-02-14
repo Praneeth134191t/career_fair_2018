@@ -149,6 +149,8 @@
     <script src="/js_new/owl.carousel.min.js"></script>
     <!-- Main JS (Do not remove) -->
     <script src="/js_new/main.js"></script>
+    <script type="text/javascript" src="/js_new/modernizr.custom.26633.js"></script>
+    <script type="text/javascript" src="/js_new/jquery.gridrotator.js"></script>
     @yield('scr')
 
 </body>

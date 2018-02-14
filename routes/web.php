@@ -14,6 +14,13 @@
 //TODO: Make this the main route
 $this->get('/send_mail','AdminController@sendMails');
 
+$this->get('/abc_abc', function(){
+
+$x=File::get(public_path('IT.txt'));
+return explode(',', $x, 2)[0];
+
+});
+
 $this->get('/', function(){
     return view('intecshome');
 });
