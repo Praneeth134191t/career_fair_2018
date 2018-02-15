@@ -21,15 +21,6 @@ class StudentSearchController extends Controller
             }
 
         $profile_as = Profile::whereIn('id',$ids)->paginate(270);
-        foreach ($profile_as as $key => $value) {
-            if(file_exists(public_path('profilepics_13/'.$value->user->name.'.jpg')))
-            {
-                $value->pro_img=$value->user->name.'.jpg';
-            }
-            else{
-                $value->pro_img='default.jpg';   
-            }
-        }
 
         if(!str_contains($request->get('q'),'hired')){
             $profile = $profile_as->sortByDesc(function ($item) {

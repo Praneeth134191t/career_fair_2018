@@ -29,7 +29,7 @@ class CompanyController extends Controller
         ]);     
         $company = Auth::User()->company;
         $company->update(['name'=>$request->name,'status'=>'active','description'=>$request->description]);
-        return redirect(route('company.details'));
+        return redirect()->route('company.details')->with('update',['Password has been changed successfully']);
     }
     public function getChangePassword()
     {
@@ -54,7 +54,7 @@ class CompanyController extends Controller
             ->log($user->name.' has set the password !');
 
         $company=$user->company;
-        return redirect()->route('company.edit_details',["company"=>$company]);
+        return redirect()->route('company.edit_details')->with('pw_succss',['Password has been changed successfully']);
     }
 
     public function viewCompany($id, Request $request){
@@ -99,7 +99,7 @@ class CompanyController extends Controller
         $vacancy->salary=$request->salary;
         
         $vacancy->save();
-        return redirect()->route('home');
+        return redirect()->route('company.details')->with('vac_add',['Password has been changed successfully']);;
 
     }
     public function postUpdateVacancy(Request $request,$id)
@@ -112,11 +112,11 @@ class CompanyController extends Controller
         $vacancy=Vacancy::where('id',$id)->first();
         
         if(!$vacancy || Auth::User()->company->id != $vacancy->company->id){
-            return redirect()->route('home');
+            return redirect()->route('company.details')->with('err',['Password has been changed successfully']);
         }
         $vacancy->update(['name'=>$request->job_title,'techs'=>$request->technologies,'responsibility'=>$request->responsibility,'salary'=>$request->salary]);
       
-        return redirect()->route('home');
+        return redirect()->route('company.details')->with('update',['Password has been changed successfully']);
 
     }
     public function getUpdateVacancy($id)
@@ -125,7 +125,7 @@ class CompanyController extends Controller
         $vacancy=Vacancy::where('id',$id)->first();
         
         if(!$vacancy || Auth::User()->company->id != $vacancy->company->id){
-            return redirect()->route('home');
+            return redirect()->route('company.details')->with('err',['Password has been changed successfully']);
         }
         return view('company-profile.edit_vacancy',['vacancy' => $vacancy]);
 
@@ -137,11 +137,11 @@ class CompanyController extends Controller
         $vacancy=Vacancy::where('id',$id)->first();
         
         if(!$vacancy || Auth::User()->company->id != $vacancy->company->id){
-            return redirect()->route('home');
+            return redirect()->route('company.details')->with('err',['Password has been changed successfully']);
         }
         $vacancy->delete();
       
-        return redirect()->route('home');
+        return redirect()->route('company.details')->with('vac_del',['Password has been changed successfully']);
 
     }    
 

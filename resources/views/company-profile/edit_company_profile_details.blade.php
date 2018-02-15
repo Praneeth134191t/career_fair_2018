@@ -7,6 +7,9 @@
 @section('content')
 <section id="fh5co-explore" data-section="">
         <div class="fh5co-explore fh5co-explore-bg-color">
+            @if (session()->has('pw_succss'))
+                                <h3 class="text-center" style="color: green">Password has been changed successfully</h3>
+            @endif
             <div class="container to-animate">
                         <div class="container">
                         <div class="list-item to-animate center-block" style="max-width: 1000px;align-content: center; margin: 0 auto;">

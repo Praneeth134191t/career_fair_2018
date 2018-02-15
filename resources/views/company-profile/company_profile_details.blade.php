@@ -6,6 +6,18 @@
 @section('content')
     <section id="fh5co-explore" data-section="">
         <div class="fh5co-explore fh5co-explore-bg-color">
+            @if (session()->has('vac_add'))
+                                <h3 class="text-center" style="color: green">New Vacancy has been added successfully</h3>
+            @endif
+            @if (session()->has('update'))
+                                <h3 class="text-center" style="color: green">Successfully Updated</h3>
+            @endif
+            @if (session()->has('vac_del'))
+                                <h3 class="text-center" style="color: green">Vacancy has been deleted successfully</h3>
+            @endif
+            @if (session()->has('err'))
+                                <h3 class="text-center" style="color: red">Something went wrong. Try Again</h3>
+            @endif
             <div class="container to-animate">
                         <div class="container">
                         <div class="list-item to-animate center-block" style="max-width: 1000px;align-content: center; margin: 0 auto;">
