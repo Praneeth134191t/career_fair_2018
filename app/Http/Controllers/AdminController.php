@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Profile;
 use App\User;
+use App\Vacancy;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -62,9 +63,19 @@ class AdminController extends Controller
     public function deleteCompany($id){
         $com = Company::find($id)->user()->delete();
         $com = Company::find($id)->delete();
+        Vacancy::where('company_id',$id)->delete();
+        return redirect()->back();
+    }
+    public function deleteUser($id){
+        $com = Profile::find($id)->delete();
         return redirect()->back();
     }
 
+    public function resetChangePassword($id){
+        $user=User::find($id);
+        $user->update(['password'=>bcrypt($user->name)]);
+        return redirect()->back();
+    }
     public function studentsPage(){
         $data = Profile::whereIn('user_id',User::where([['name','like','13%'],['role','student']])->pluck('id')->toArray())->paginate(10);
         return view('admin.studentsPage',['students' => $data]);

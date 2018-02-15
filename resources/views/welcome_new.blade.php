@@ -2,10 +2,7 @@
 
 @section('header')
         <!--grid-->
-        <link rel="stylesheet" type="text/css" href="{{asset('css_new/demo.css')}}" />
-        <noscript>
-            <link rel="stylesheet" type="text/css" href="{{asset('css_new/fallback.css')}}" />
-        </noscript>
+        
         <!--[if lt IE 9]>
         <link rel="stylesheet" type="text/css" href="css/fallback.css" />
         <![endif]-->
@@ -298,7 +295,7 @@
             $( '#ri-grid' ).gridrotator( {
                 rows : 5,
                 columns : 11,
-                animType        : 'slideRight,slideTop',
+                animType        : 'random',
                 slideshow       : true,
                 interval        : 1000,
                 animSpeed       : 800,

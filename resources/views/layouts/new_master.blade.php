@@ -29,7 +29,10 @@
     <link rel="shortcut icon" href="favicon.ico"> 
 
     <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    
+    <link rel="stylesheet" type="text/css" href="{{asset('css_new/demo.css')}}" />
+        <noscript>
+            <link rel="stylesheet" type="text/css" href="{{asset('css_new/fallback.css')}}" />
+        </noscript>
     <!-- Animate.css -->
     <link rel="stylesheet" href="{{asset('css_new/animate.css')}}">
     <!-- Icomoon Icon Fonts-->

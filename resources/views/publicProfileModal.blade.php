@@ -12,8 +12,8 @@
 						@if(substr($profileDetails->index, 0, 2) === "12")
 							<div class="col-lg-5"><img class="img-responsive" src="/profilepics/{{$profileDetails->profile_img}}" alt=""></div>
 						@else
-							@if(file_exists(public_path('profilepics_13_2/'.$profileDetails->profile_img)))
-							<div class="col-lg-5"><img class="img-responsive" src="/profilepics_13_2/{{$profileDetails->profile_img}}" alt=""></div>
+							@if(file_exists(public_path('profilepics_13_2/'.$profileDetails->user->name.'.jpg')))
+							<div class="col-lg-5"><img class="img-responsive" src="/profilepics_13_2/{{$profileDetails->user->name.'.jpg'}}" alt=""></div>
 							@else
 							<div class="col-lg-5"><img class="img-responsive" src="/profilepics_13_2/default.jpg" alt=""></div>
 							@endif	

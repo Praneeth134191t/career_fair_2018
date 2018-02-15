@@ -79,6 +79,8 @@ Route::group(['prefix' => 'careers'], function()
             $this->get('/getEditStudent/{id}','AdminController@getEditStudent')->name('admin.getEditStudent');
             $this->post('/editStudent/{id}','AdminController@editStudent')->name('admin.editStudent');
             $this->get('/deleteCom/{id}','AdminController@deleteCompany')->name('admin.deleteCompany');
+            $this->get('/deleteUser/{id}','AdminController@deleteUser')->name('admin.deleteUser');
+            $this->get('/reserUserPassword/{id}','AdminController@resetChangePassword')->name('admin.reserUserPassword');
             $this->post('/companies','AdminController@addCompany')->name('admin.addNewCompany');
             $this->post('/add_student','AdminController@addStudent')->name('admin.addStudent');
             $this->get('/ex_profiles','AdminController@exportProfileData')->name('admin.exportProfiles');

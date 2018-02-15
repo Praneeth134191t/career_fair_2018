@@ -84,7 +84,10 @@
                                 <a target="_blank" href="#">{{$student->user->status}}</a>
                             </td>
                             <td style="text-align: right; vertical-align: middle">
-                                <a href="{{route('admin.deleteCompany',[$student->id])}}" onclick="return confirm('Do want to delete \'{{$student->firstName}}\' ?')" type="button" class="btn btn-danger btn-xs">Delete</a>
+                                <a href="{{route('admin.deleteUser',[$student->id])}}" onclick="return confirm('Do want to delete \'{{$student->firstName}}\' ?')" type="button" class="btn btn-danger btn-xs">Delete</a>
+                            </td>
+                            <td style="text-align: right; vertical-align: middle">
+                                <a href="{{route('admin.reserUserPassword',[$student->user->id])}}" onclick="return confirm('Do want to reset password of \'{{$student->firstName}}\' ?')" type="button" class="btn btn-danger btn-xs">Reset Password</a>
                             </td>
                             <td style="text-align: right; vertical-align: middle">
                                 <a href="{{route('admin.getEditStudent',[$student->user->id])}}" type="button" class="btn btn-danger btn-xs">Update</a>
