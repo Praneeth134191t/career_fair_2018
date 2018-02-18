@@ -77,7 +77,12 @@
 
                 <div class="form-group{{ $errors->has('sponsership_type') ? ' has-error' : '' }}">
                     <label for="sponsership_type">Sponsership type</label>
+                    @if(!is_null($company->sponsership_type))
                     <input class="form-control" id="sponsership_type" rows="3" placeholder="Web Site" name="sponsership_type" value="{{ old('sponsership_type',$company->sponsership_type) }}">
+                    @else
+                    <input class="form-control" id="sponsership_type" rows="3" placeholder="Web Site" name="sponsership_type" value="{{ old('sponsership_type','None') }}">
+                    @endif
+
                 </div>
                     <div class="col-md-offset-11">
                 <button type="submit" class="btn btn-primary">Submit</button>

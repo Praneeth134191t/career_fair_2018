@@ -98,6 +98,17 @@
                         <small id="emailHelp" class="form-text text-muted">Your last name will be shared publicly</small>
                     </div>
 
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email " value="{{ old('email',$profile->email) }}" name="email">
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
+                        <small id="emailHelp" class="form-text text-muted">Your email will be shared publicly</small>
+                    </div>                    
+
                     <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                         <label for="phoneNo">Phone NO.</label>
                         <input type="text" class="form-control" id="phone" aria-describedby="emailHelp" placeholder="Enter Phone Number" value="{{ old('phone', $profile->phone) }}" name="phone">

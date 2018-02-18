@@ -28,7 +28,7 @@
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                         <div class="add_image">
-                                            <img src="{{$company->logo}}" alt="Avatar" class="img-responsive center-block" >
+                                            <img src="{{$company->logo}}" alt="Avatar" class="img-responsive center-block" style="width: 200px">
                                         </div>
                                         <br>
                                     </div>
@@ -50,7 +50,7 @@
                                     </div>
                                     <h3 class="text-center"> Available Vacancies</h3>
                                     @if(count($company->vacancies)==0)
-                                    <h4 class="text-center">There is no added vacancies</h4>
+                                    <h4 class="text-center">No vacancies</h4>
                                     @elseif(count($company->vacancies)==1)
                                     <h4 class="text-center">There is {{count($company->vacancies)}} vacancy</h4>
                                     @else

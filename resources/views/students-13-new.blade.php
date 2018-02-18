@@ -70,7 +70,7 @@
                 </div>
     </section>
     <div class="moreDetails" style="display: ;">
-    </div>     
+    </div>
 @endsection
 @section('scr')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
@@ -87,7 +87,7 @@
             var qu = getURLParameter('q');
             if(qu !== null ){
                 $('.pagination').hide();
-                console.log(qu);
+                
                 var resultObj = $('#student-list');
                 if(qu.length >= 3){
 
@@ -103,12 +103,16 @@
         //stdSearch
         $('.query').on('keyup',function(){
 
+
             console.log(window.location.href);
             window.history.pushState('page2', 'Title', '{{route('students')}}?q='+this.value);
             var reloadBtn =
-                    '<a href="{{route('students')}}" class="btn btn-raised btn-xs">Reload' +
+                    '<a href="{{route('students')}}" class="btn btn-raised btn-xs reload">Reload' +
                     '</a>'
             var resultObj = $('#student-list');
+            if(this.value.length == 0){
+                window.location.replace("{{route('students')}}");
+            }
             if(this.value.length >= 3){
                 $('.searching_ico').show();
                 $.ajax({

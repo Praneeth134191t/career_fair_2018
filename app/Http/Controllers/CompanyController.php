@@ -22,13 +22,22 @@ class CompanyController extends Controller
     }
 
     public function postEditCompanyDetails(Request $request){
-
         $this->validate($request,[
             'name' => 'required',
-            'description' => 'required|min:50|max:500'
-        ]);     
+            'description' => 'required|min:50|max:500',
+            'input_img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3072',
+        ]);
+        $logo=Auth::User()->company->logo;
+        if ($request->hasFile('input_img')) {
+            $image = $request->file('input_img');
+            $name = str_replace('_', ' ', Auth::User()->name);
+            $name = $name.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/com_images');
+            $image->move($destinationPath, $name);
+            $logo=$request->root().'/com_images/'.$name;
+        }     
         $company = Auth::User()->company;
-        $company->update(['name'=>$request->name,'status'=>'active','description'=>$request->description]);
+        $company->update(['name'=>$request->name,'status'=>'active','description'=>$request->description, 'logo'=>$logo]);
         return redirect()->route('company.details')->with('update',['Password has been changed successfully']);
     }
     public function getChangePassword()
@@ -86,7 +95,7 @@ class CompanyController extends Controller
         $this->validate($request,[
             'job_title' => 'required',
             'technologies' => 'required',
-            'responsibility'=>'required|min:20|max:500',
+            'responsibility'=>'required|min:10|max:500',
         ]);
 
         $company = Auth::User()->company;
@@ -107,7 +116,7 @@ class CompanyController extends Controller
         $this->validate($request,[
             'job_title' => 'required',
             'technologies' => 'required',
-            'responsibility'=>'required|min:20|max:500',
+            'responsibility'=>'required|min:10|max:500',
         ]);
         $vacancy=Vacancy::where('id',$id)->first();
         

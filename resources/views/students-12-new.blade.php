@@ -107,6 +107,9 @@
                     '<a href="{{route('students_1')}}" class="btn btn-raised btn-xs">Reload' +
                     '</a>'
             var resultObj = $('#student-list');
+            if(this.value.length == 0){
+                window.location.replace("{{route('students_1')}}");
+            }
             if(this.value.length >= 3){
                 $('.searching_ico').show();
                 $.ajax({

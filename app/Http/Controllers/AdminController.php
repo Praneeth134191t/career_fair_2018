@@ -45,18 +45,26 @@ class AdminController extends Controller
     }
 
     public function addCompany(Request $request){
+
+
         $this->validate($request,[
-            'name' => 'required',
+            'name' => 'required|unique:companies',
             'user_name' => 'required',
-            'email' => 'required',
+            'email' => 'email|required|unique:users',
             'password' => 'required|min:6',
-            'website' =>  'required',
-            'logo' => 'required|max:500',
-            'sponsership_type' => 'required',
-            'description' => 'required|min:50|max:500'
+            'website' =>  'required|unique:companies',
+            'sponsership_type' => 'required'
         ]);
+        $logo=$request->logo;
+        if(is_null($request->logo)){
+            $logo="http://intecs.itfac.mrt.ac.lk/com_images/default.png";
+        }
+        else{
+            $logo=$request->logo;
+        }
+        
         $user=User::create(['name'=>$request->user_name,'email'=>$request->email,'password'=>bcrypt($request->password),'status'=>'first_time','role'=>'company']);
-        $company = $user->company()->create($request->all());
+        $company = $user->company()->create(['name'=>$request->name,'website'=>$request->website,'logo'=>$logo,'description'=>$request->description]);
         return redirect(route('admin.companiesPage'));
     }
 
@@ -112,10 +120,9 @@ class AdminController extends Controller
     public function editCompany(Request $request,$id){
         $this->validate($request,[
             'name' => 'required',
-            'description' => 'required',
             'logo' => 'required',
             'website' => 'required',
-            'sponsership_type' =>  'required'
+            'sponsership_type' => 'required'
         ]);
         Company::find($id)->update($request->all());
 
@@ -140,6 +147,7 @@ class AdminController extends Controller
             'firstName' => 'required',
             'lastName' => 'required',
             'phone' => 'required',
+            'email' => 'email|required',
             'linkedin' => 'required',
             'cv_link' =>  'required',
             'objective' => 'required|min:50|max:500',
@@ -151,6 +159,7 @@ class AdminController extends Controller
             'firstName' => $request->firstName,
             'lastName' => $request->lastName,
             'phone' => $request->phone,
+            'email' => $request->email,
             'linkedinLink' => $request->linkedin,
             'cv_link' =>  $request->cv_link,
             'objective' => $request->objective,

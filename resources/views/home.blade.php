@@ -34,6 +34,7 @@
                                     <div class="col-md-7 col-md-offset-1" style="margin-top: 70px;">
                                         <div class="jumbotron" style="margin: 20px; padding: 5px;">
                                         <div><strong>Phone Number: </strong></div> <p style="font-size: 1em" id="phone">{{ $profileDetails->phone }}</p>
+                                        <div><strong>Email: </strong></div> <p style="font-size: 1em" id="email">{{ $profileDetails->email }}</p>
                                         <div><strong>Degree: </strong></div> <p style="font-size: 1em" id="degree">{{ $profileDetails->degree }}</p>
                                         <div><strong>Job Status: </strong></div> <p style="font-size: 1em" id="job">{{ $profileDetails->job_status }}</p>
                                         <div><strong>CV link: </strong></div> <p style="font-size: 1em" id="cv_link"><a target="_blank" href="{{ $profileDetails->cv_link  }}">PDF CV link</a></p>

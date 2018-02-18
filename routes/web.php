@@ -14,12 +14,12 @@
 //TODO: Make this the main route
 $this->get('/send_mail','AdminController@sendMails');
 
-$this->get('/abc_abc', function(){
+// $this->get('/abc_abc', function(){
 
-$x=File::get(public_path('IT.txt'));
-return explode(',', $x, 2)[0];
+// $x=File::get(public_path('IT.txt'));
+// return explode(',', $x, 2)[0];
 
-});
+// });
 
 $this->get('/', function(){
     return view('intecshome');
@@ -107,7 +107,7 @@ Route::group(['prefix' => 'careers'], function()
            $this->post('delete_vac/{id}', 'CompanyController@deleteVacancy')->name('company.deleteVacancy');
            //$this->get('/company/{id}','CompanyController@viewCompany')->name('company_view');
            $this->get('change_password', 'CompanyController@getChangePassword')->name('get_change_company_password'); 
-           $this->post('set_password','CompanyController@setPassword')->name('set_company_password'); 
+           $this->post('set_password','CompanyController@setPassword')->name('set_company_password');  
         });
         $this::group(['middleware' => ['hasProfile']], function () {            
             /*

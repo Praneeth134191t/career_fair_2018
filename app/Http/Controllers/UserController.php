@@ -78,6 +78,7 @@ class UserController extends Controller{
             'firstName' => 'required',
             'lastName' => 'required',
             'phone' => 'required',
+            'email' => 'email|required|unique:profiles',
             'linkedin' => 'required',
             'cv_link' =>  'required',
             'objective' => 'required|min:50|max:500',
@@ -93,6 +94,7 @@ class UserController extends Controller{
         $objective = $request['objective'];
         $techskills = $request['techskills'];
         $degree = $request['degree'];
+        $email = $request['email'];
         $userId = Auth::user()->id;
 
         if(Auth::user()->profile){
@@ -104,6 +106,7 @@ class UserController extends Controller{
         $profile->lastName = $lastName;
         $profile->profile_img = $request['profile_img'];
         $profile->phone = $phone;
+        $profile->email = $email;
         $profile->linkedinLink = $linkedin;
         $profile->degree = $degree;
         $profile->objective = $objective;
@@ -147,6 +150,7 @@ class UserController extends Controller{
             'firstName' => 'required',
             'lastName' => 'required',
             'phone' => 'required',
+            'email' => 'email|required',
             'linkedin' => 'active_url',
             'cv_link' =>  'required|active_url',
             'objective' => 'required|min:50|max:500',
@@ -161,6 +165,7 @@ class UserController extends Controller{
         $profile->firstName = $request['firstName'];
         $profile->lastName = $request['lastName'];
         $profile->phone = $request['phone'];
+        $profile->email = $request['email'];
         $profile->degree = $request['degree'];
         $profile->linkedinLink = $request['linkedin'];
         $profile->objective = $request['objective'];
@@ -169,7 +174,7 @@ class UserController extends Controller{
 
         $profile->update();
         return response()->json(['firstName' => $profile->firstName, 'lastName'=> $profile->lastName, 'phone'=>$profile->phone,
-        'degree'=> $profile->degree, 'linkedin'=>$profile->linkedinLink, 'objective'=> $profile->objective, 'techs'=>$profile->techs],200);
+        'degree'=> $profile->degree, 'linkedin'=>$profile->linkedinLink, 'objective'=> $profile->objective, 'techs'=>$profile->techs,'email'=>$profile->email],200);
 //        if(Auth::user()!= $post->user)
 //        {
 //            return redirect()->back();

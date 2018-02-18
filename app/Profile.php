@@ -12,7 +12,7 @@ class Profile extends Model
 
     protected $appends = ["index"];
 
-    protected $fillable = ['firstName', 'lastName', 'phone', 'degree','job_status','linkedinLink','profile_img','user_id','objective','techs'];
+    protected $fillable = ['firstName', 'lastName', 'phone', 'degree','job_status','linkedinLink','profile_img','user_id','objective','techs','email'];
 
     public function getIndexAttribute()
     {

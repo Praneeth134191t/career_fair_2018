@@ -143,6 +143,7 @@
                 	<thead>
                 		<tr>
                 			<th>name</th>
+                            <th>user name</th>
                 			<th>logo</th>
                             <th>status</th>
                 			<th>description</th>
@@ -155,6 +156,9 @@
                 		<tr >
                 			<td>
                                 <a target="_blank" href="{{$company->website}}">{{$company->name}}</a>
+                            </td>
+                            <td>
+                                <a target="_blank" href="{{$company->website}}">{{$company->user->name}}</a>
                             </td>
                 			<td>
                                 <div class="comp-img">

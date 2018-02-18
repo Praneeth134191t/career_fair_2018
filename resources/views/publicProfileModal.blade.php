@@ -29,6 +29,9 @@
 							</h4>
 							<br>
 							<h4>Mobile Number : {{$profileDetails->phone}}</h4>
+							@if(!is_null($profileDetails->email))
+							<h4>Email : {{$profileDetails->email}}</h4>
+							@endif
                             <!-- <h4>Email : usbgalle@gmail.com</h4> -->
                             <h4>Degree Program : {{$profileDetails->degree}}</h4>
                             <a  style="text-decoration: none;background-color: #D3D3D3;color: black" class="cv-btn" href="{{ $profileDetails->linkedinLink  }}" target="_blank">LinkedIn Account</a>

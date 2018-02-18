@@ -73,7 +73,7 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <div class="nav navbar-nav navbar-right hidden-xs" style="font-size: 0.7em; border-bottom: 1px solid black;margin-top: 5px"><a style="text-decoration: none; color: grey"
-                        href="https://www.mrt.ac.lk/web/itfac" class="external">Faculty of Information Technology - University of Moratuwa</a></div>
+                        href="https://www.mrt.ac.lk/web/itfac" class="external" target="_blank">Faculty of Information Technology - University of Moratuwa</a></div>
                     <br>
                     <ul class="nav navbar-nav navbar-left">
 
@@ -121,16 +121,14 @@
             <div class="row">
                 <div class="to-animate">
                     <div class="row">
-                        <div class="col-lg-3"><i class="icon-map-marker"></i> INTCS, Faculty of Information Technology, University of Moratuwa, Katubedds, Sri Lanka</div>
-                        <div class="col-lg-3"><i class="icon-phone"></i> + 94 71 123 4587</div>
-                        <div class="col-lg-3"><i class="icon-envelope"></i><a href="#"> info@intecs.mrt.ac.lk</a></div>
-                        <div class="col-lg-3"><i class="icon-globe2"></i><a href="#"> www.intecs.itfac.mrt.ac.lk/careers</a></div>
+                        <div class="col-lg-3"><i class="icon-map-marker"></i> INTECS, Faculty of Information Technology, University of Moratuwa, Katubedda, Sri Lanka</div>
+                        <div class="col-lg-3"><i class="icon-phone"></i> + 94 71 365 5350</div>
+                        <div class="col-lg-3"><i class="icon-envelope"></i><a href="#"> intecs@uom.lk</a></div>
+                        <div class="col-lg-3"><i class="icon-globe2"></i><a href="http://www.intecs.itfac.mrt.ac.lk" target="_blank"> www.intecs.itfac.mrt.ac.lk</a></div>
                     </div>
                     <ul class="social-media pull-right">
-                        <li><a href="#" class="facebook"><i class="icon-facebook"></i></a></li>
-                        <li><a href="#" class="twitter"><i class="icon-twitter"></i></a></li>
-                        <li><a href="#" class="dribbble"><i class="icon-dribbble"></i></a></li>
-                        <li><a href="#" class="github"><i class="icon-github-alt"></i></a></li>
+                        <li><a href="https://www.facebook.com/intecs.lk/" class="facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/intecsfit" class="twitter" target="_blank"><i class="icon-twitter"></i></a></li>
                     </ul>
                 </div>
 
