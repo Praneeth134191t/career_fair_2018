@@ -78,7 +78,7 @@ class UserController extends Controller{
             'firstName' => 'required',
             'lastName' => 'required',
             'phone' => 'required',
-            'email' => 'email|required|unique:profiles',
+            'email' => 'email|required',
             'linkedin' => 'required',
             'cv_link' =>  'required',
             'objective' => 'required|min:50|max:500',
@@ -170,11 +170,12 @@ class UserController extends Controller{
         $profile->linkedinLink = $request['linkedin'];
         $profile->objective = $request['objective'];
         $profile->techs = $request['techskills'];
+        $profile->cv_link= $request['cv_link'];
         $profile->job_status = $request['job_status'];
 
         $profile->update();
         return response()->json(['firstName' => $profile->firstName, 'lastName'=> $profile->lastName, 'phone'=>$profile->phone,
-        'degree'=> $profile->degree, 'linkedin'=>$profile->linkedinLink, 'objective'=> $profile->objective, 'techs'=>$profile->techs,'email'=>$profile->email],200);
+        'degree'=> $profile->degree, 'linkedin'=>$profile->linkedinLink, 'objective'=> $profile->objective, 'techs'=>$profile->techs,'email'=>$profile->email,'cv_link'=>$profile->cv_link],200);
 //        if(Auth::user()!= $post->user)
 //        {
 //            return redirect()->back();
