@@ -37,6 +37,12 @@
                                             <div class="col-lg-4 col-md-4" style="text-align: left;font-weight: bold"> Company Name</div>
                                             <div class="col-lg-8 col-md-8" style="text-align: left">  {{$company->name}}</div>
                                         </div>
+                                        @if(!is_null($company->website))
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4" style="text-align: left;font-weight: bold"> Website</div>
+                                            <div class="col-lg-8 col-md-8" style="text-align: left">{{$company->website}}</div>   
+                                        </div>
+                                        @endif 
                                         <div class="row">
                                             <br>
                                             <div class="col-lg-4 col-md-4" style="text-align: left;font-weight: bold"> Company Description </div>

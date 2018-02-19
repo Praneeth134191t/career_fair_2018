@@ -24,6 +24,7 @@ class CompanyController extends Controller
     public function postEditCompanyDetails(Request $request){
         $this->validate($request,[
             'name' => 'required',
+            'website'=> 'required',
             'description' => 'required|min:50|max:500',
             'input_img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3072',
         ]);
@@ -37,7 +38,7 @@ class CompanyController extends Controller
             $logo=$request->root().'/com_images/'.$name;
         }     
         $company = Auth::User()->company;
-        $company->update(['name'=>$request->name,'status'=>'active','description'=>$request->description, 'logo'=>$logo]);
+        $company->update(['name'=>$request->name,'status'=>'active','description'=>$request->description, 'logo'=>$logo, 'website'=>$request->website]);
         return redirect()->route('company.details')->with('update',['Password has been changed successfully']);
     }
     public function getChangePassword()

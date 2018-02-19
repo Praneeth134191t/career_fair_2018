@@ -84,6 +84,7 @@
         }
 
         $(document).ready(function() {
+			document.getElementById("q").focus();
             var qu = getURLParameter('q');
             if(qu !== null ){
                 $('.pagination').hide();
@@ -111,7 +112,7 @@
                     '</a>'
             var resultObj = $('#student-list');
             if(this.value.length == 0){
-                window.location.replace("{{route('students')}}");
+                window.location.replace("{{route('students')}}");		
             }
             if(this.value.length >= 3){
                 $('.searching_ico').show();

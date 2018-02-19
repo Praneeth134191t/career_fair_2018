@@ -52,19 +52,22 @@ class AdminController extends Controller
             'user_name' => 'required',
             'email' => 'email|required|unique:users',
             'password' => 'required|min:6',
-            'website' =>  'required|unique:companies',
-            'sponsership_type' => 'required'
+            'sponsership_type' => 'required',
+            'input_img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3072',
         ]);
-        $logo=$request->logo;
-        if(is_null($request->logo)){
-            $logo="http://intecs.itfac.mrt.ac.lk/com_images/default.png";
-        }
-        else{
-            $logo=$request->logo;
+        
+        $logo="http://intecs.itfac.mrt.ac.lk/com_images/default.png";
+        if ($request->hasFile('input_img')) {
+            $image = $request->file('input_img');
+            $name = str_replace('_', ' ', $request->user_name);
+            $name = $name.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/com_images');
+            $image->move($destinationPath, $name);
+            $logo=$request->root().'/com_images/'.$name;
         }
         
         $user=User::create(['name'=>$request->user_name,'email'=>$request->email,'password'=>bcrypt($request->password),'status'=>'first_time','role'=>'company']);
-        $company = $user->company()->create(['name'=>$request->name,'website'=>$request->website,'logo'=>$logo,'description'=>$request->description]);
+        $company = $user->company()->create(['name'=>$request->name,'website'=>$request->website,'logo'=>$logo,'description'=>$request->description,'sponsership_type'=>$request->sponsership_type]);
         return redirect(route('admin.companiesPage'));
     }
 
@@ -120,11 +123,19 @@ class AdminController extends Controller
     public function editCompany(Request $request,$id){
         $this->validate($request,[
             'name' => 'required',
-            'logo' => 'required',
-            'website' => 'required',
+            'input_img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3072',
             'sponsership_type' => 'required'
         ]);
-        Company::find($id)->update($request->all());
+        $logo=Company::find($id)->logo;
+        if ($request->hasFile('input_img')) {
+            $image = $request->file('input_img');
+            $name = str_replace('_', ' ', Auth::User()->name);
+            $name = $name.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/com_images');
+            $image->move($destinationPath, $name);
+            $logo=$request->root().'/com_images/'.$name;
+        }
+        Company::find($id)->update(['name'=>$request->name,'website'=>$request->website,'logo'=>$logo,'description'=>$request->description,'sponsership_type'=>$request->sponsership_type]);
 
         return redirect(route('admin.companiesPage'));
     }

@@ -27,7 +27,7 @@
                                             <input data-preview="#preview" name="input_img" type="file" id="imageInput" class="center-block" style="font-size: 0.8em" value="{{ old('input_img') }}">
                                         </div>
                                         <span style="color: black;font-size: 0.7em;text-align: center;">
-                                                <strong>(Image size should be small than 3MB)</strong>
+                                                <strong>(Max Size : 3MB)</strong>
                                                 </span>
                                         <br>
                                         @if ($errors->has('input_img'))
@@ -47,6 +47,17 @@
                                             @endif    
                                             </div>
                                         </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4" style="text-align: center"> Website Url<span style="color:red;">*</span></div>
+                                            <div class="col-lg-8 col-md-8">  <input class="login-inbox center-block" type="text" placeholder="http://intecs.itfac.mrt.ac.lk" style="width: 95%; color: black" name="website" value="{{ old('website',$company->website) }}">
+                                            @if ($errors->has('website'))
+                                                <span style="color: red;font-size: 0.7em;text-align: center;">
+                                                <strong>{{ $errors->first('website') }}</strong>
+                                                </span>
+                                            @endif    
+                                            </div>
+                                        </div>                                        
                                         <div class="row">
                                             <br>
                                             <div class="col-lg-4 col-md-4" style="text-align: center"> Company Description<span style="color:red;">*</span></div>

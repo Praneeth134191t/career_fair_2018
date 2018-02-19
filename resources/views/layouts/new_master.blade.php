@@ -124,7 +124,7 @@
                         <div class="col-lg-3"><i class="icon-map-marker"></i> INTECS, Faculty of Information Technology, University of Moratuwa, Katubedda, Sri Lanka</div>
                         <div class="col-lg-3"><i class="icon-phone"></i> + 94 71 365 5350</div>
                         <div class="col-lg-3"><i class="icon-envelope"></i><a href="#"> intecs@uom.lk</a></div>
-                        <div class="col-lg-3"><i class="icon-globe2"></i><a href="http://www.intecs.itfac.mrt.ac.lk" target="_blank"> www.intecs.itfac.mrt.ac.lk</a></div>
+                        <div class="col-lg-3"><i class="icon-globe2"></i><a href="http://intecs.itfac.mrt.ac.lk" target="_blank">intecs.itfac.mrt.ac.lk</a></div>
                     </div>
                     <ul class="social-media pull-right">
                         <li><a href="https://www.facebook.com/intecs.lk/" class="facebook" target="_blank"><i class="icon-facebook"></i></a></li>

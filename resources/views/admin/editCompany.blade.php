@@ -57,11 +57,11 @@
                     @endif
                 </div>
                 <div class="form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
-                    <label for="logo">Logo</label>
-                    <input class="form-control" id="logo" rows="3" placeholder="Logo" name="logo" value="{{ old('logo',$company->logo) }}">
-                    @if ($errors->has('logo'))
+                    <label for="logo">Logo (Max : 3MB)</label>
+                    <input data-preview="#preview" name="input_img" type="file" id="imageInput" class="center-block" style="font-size: 0.8em" value="{{ old('input_img') }}">
+                    @if ($errors->has('input_img'))
                         <span class="help-block">
-                            <strong>{{ $errors->first('logo') }}</strong>
+                            <strong>{{ $errors->first('input_img') }}</strong>
                         </span>
                     @endif
                 </div>

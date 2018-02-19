@@ -81,7 +81,7 @@
         <article id="career-fair">
             <h2 class="major">FIT Future Careers</h2>
             <!-- src="http://i.imgur.com/oBatHFc.jpg" -->
-            <span class="image main"><img src="{{ url('/images_2018/logo.png') }}" alt="FIT CodeRush Participants" /></span>
+            <span class="image main"><img src="{{ url('/images_2018/front_logo.png') }}" alt="FIT CodeRush Participants" /></span>
             <p class="center-item">The Annual Career Fair of the Faculty of Information Technology - FIT Future Careers</p>
             <p class="center-item">Looking to Hire? Visit Our Career Fair Page</p>
             <ul class="actions center-item">
