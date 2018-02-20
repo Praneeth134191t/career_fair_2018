@@ -40,7 +40,7 @@ class AdminController extends Controller
     }
 
     public function companiesPage(){
-        $data = Company::orderBy('created_at','desc')->paginate(5);
+        $data = Company::orderBy('name')->paginate(5);
         return view('admin.companiesPage',['companies' => $data]);
     }
 
@@ -124,7 +124,9 @@ class AdminController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'input_img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3072',
-            'sponsership_type' => 'required'
+            'sponsership_type' => 'required',
+            'user_name' => 'required'
+
         ]);
         $logo=Company::find($id)->logo;
         if ($request->hasFile('input_img')) {
@@ -134,6 +136,12 @@ class AdminController extends Controller
             $destinationPath = public_path('/com_images');
             $image->move($destinationPath, $name);
             $logo=$request->root().'/com_images/'.$name;
+        }
+        if(!is_null($request->password)){
+            Company::find($id)->user->update(['name'=>$request->user_name,'password'=>bcrypt($request->password)]);    
+        }
+        else{
+            Company::find($id)->user->update(['name'=>$request->user_name]);
         }
         Company::find($id)->update(['name'=>$request->name,'website'=>$request->website,'logo'=>$logo,'description'=>$request->description,'sponsership_type'=>$request->sponsership_type]);
 

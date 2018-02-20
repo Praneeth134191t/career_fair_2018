@@ -84,6 +84,25 @@
                     @endif
 
                 </div>
+
+                <div class="form-group{{ $errors->has('user_name') ? ' has-error' : '' }}">
+                    <label for="user_name">User Name</label>
+                    <input class="form-control" id="user_name" rows="3" placeholder="Web Site" name="user_name" value="{{ old('user_name',$company->user->name) }}">
+                    @if ($errors->has('user_name'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('user_name') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                    <label for="password">Password(optional)</label>
+                    <input class="form-control" id="password" rows="3" placeholder="Web Site" name="password" value="{{ old('password') }}">
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>                                  
                     <div class="col-md-offset-11">
                 <button type="submit" class="btn btn-primary">Submit</button>
                     <input type="hidden" name="_token" value="{{Session::token()}}">

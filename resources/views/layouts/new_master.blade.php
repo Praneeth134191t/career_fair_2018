@@ -43,6 +43,7 @@
     <!-- Style -->
 
     <link rel="stylesheet" href="{{asset('css_new/style.css')}}">
+
     @yield('header')
     <!-- Scripts -->
     <script>

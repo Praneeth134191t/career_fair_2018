@@ -3,6 +3,7 @@
 /public/profilepics/*
 /public/profilepics_13/*
 /public/profilepics_13_2/*
+/public/com_images/*
 node_modules
 /storage/*.key
 /vendor

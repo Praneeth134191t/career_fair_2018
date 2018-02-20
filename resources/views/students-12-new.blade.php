@@ -14,7 +14,7 @@
 <section id="fh5co-explore" data-section="explore">
         <div class="container">
             <br><br>
-                <h2 class="to-animate-3 text-center">All Candidates of Batch 12</h2>
+                <h2 class="to-animate-3 text-center">All Candidates of Previous Batch</h2>
             <div class="row">
                 <div class="col-md-12 section-heading text-center to-animate">
                     <input class="search-inbox query" value="{{app('request')->input('q')}}" id="q" type="text" placeholder="Search">
@@ -23,9 +23,6 @@
                     <ul class="pagination" style="font-size: 0.7em">
                         {{ $students->links() }}
                     </ul>
-                    <br>
-                    
-                    <a href="{{route('students')}}" class="text-center" style="font-size: 0.7em">View Batch 13</a>
                 </div>
                 </div>
         </div>
@@ -61,6 +58,10 @@
                             <ul class="pagination" style="font-size: 0.7em">
                                 {{ $students->links() }}
                             </ul>
+                        <div class="col-md-12 text-center">
+                            <a style="text-decoration: none;background-color: #D3D3D3;color: black" class="cv-btn" href="{{route('students')}}">View Current Batch</a>
+                        </form>
+                        </div>
                         </div>
                         </div>
                         </div>
