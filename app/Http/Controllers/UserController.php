@@ -120,7 +120,6 @@ class UserController extends Controller{
         }
 
         $profile->save();
-        $profile->searchable();
         return redirect()->route('home',['profileDetails'=> $profile]);
     }
 

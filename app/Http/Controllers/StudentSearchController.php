@@ -20,7 +20,7 @@ class StudentSearchController extends Controller
                 }
             }
 
-        $profile_as = Profile::whereIn('id',$ids)->paginate(270);
+        $profile_as = Profile::whereIn('id',$ids)->orderBy('job_status')->orderBy('firstName')->paginate(270);
 
         if(!str_contains($request->get('q'),'hired')){
             $profile = $profile_as->sortByDesc(function ($item) {
