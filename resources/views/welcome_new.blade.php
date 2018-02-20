@@ -1,15 +1,14 @@
 @extends('layouts.new_master')
 
 @section('header')
-        <!--grid-->
-        
-        <!--[if lt IE 9]>
-        <link rel="stylesheet" type="text/css" href="css/fallback.css" />
-        <![endif]-->
-        <!--end grid-->
+    
 @endsection
 
 @section('content')
+<link rel="stylesheet" type="text/css" href="{{asset('css_new/demo.css')}}" />
+        <noscript>
+            <link rel="stylesheet" type="text/css" href="{{asset('css_new/fallback.css')}}" />
+        </noscript>
     <div id="ri-grid" style="position: absolute;z-index: -10;"  class="ri-grid ri-grid-size-1 ri-shadow hidden-xs" >
         <img class="ri-loading-image" src="{{asset('images/loading.gif')}}"/>
         <ul >

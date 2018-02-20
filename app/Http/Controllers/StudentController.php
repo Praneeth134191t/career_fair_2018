@@ -27,7 +27,7 @@ class StudentController extends Controller
                     array_push($ids, $value['id']);
                 }
             }
-            $profiles = Profile::whereIn('id',$ids)->paginate(270);
+            $profiles = Profile::whereIn('id',$ids)->orderBy('job_status')->orderBy('firstName')->paginate(270);
             //TODO: remove after real images are uploaded
             //$faker = Factory::create();
             for($i=0;$i<count($profiles);$i++){
@@ -67,7 +67,7 @@ class StudentController extends Controller
                     array_push($ids, $value['id']);
                 }
             }
-            $profiles = Profile::whereIn('id',$ids)->paginate(270);
+            $profiles = Profile::whereIn('id',$ids)->orderBy('job_status')->orderBy('firstName')->paginate(270);
             
             for($i=0;$i<count($profiles);$i++){
                 $profiles[$i]->objective = str_limit($profiles[$i]->objective, $limit = 180, $end = '...');
