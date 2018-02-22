@@ -10,8 +10,21 @@ use Validator;
 
 class CompanyController extends Controller
 {
-    public function index(){
-        $data = Company::where('status','active')->paginate(10);
+    public function index(Request $request){
+        if($request->has('q')){
+            // return User::where('status','active')->pluck('id')->toArray();
+            $ids=[];
+            $pros = Company::search($request->get('q'))->get();//paginate(270);
+
+            foreach ($pros as $key => $value) {
+                if($value['status']=='active'){
+                    array_push($ids, $value['id']);
+                }
+            }
+        $company = Company::whereIn('id',$ids)->orderBy('name')->paginate(200);
+        return view('companies_new',['companies'=> $company]);
+        }
+        $data = Company::where('status','active')->orderBy('name')->paginate(10);
         return view('companies_new',['companies'=> $data]);
     }
 
@@ -153,7 +166,23 @@ class CompanyController extends Controller
       
         return redirect()->route('company.details')->with('vac_del',['Password has been changed successfully']);
 
-    }    
+    }
+    public function search(Request $request){
+
+        $company = Company::search($request->get('q'))->paginate(200);
+        $company = $company->filter(function ($value, $key) {
+                return $value['status'] === "active";
+            });
+        foreach ($company as $key => $value) {
+                $company[$key]["vacs"]=Vacancy::where('company_id',$value->id)->select('id','name')->get();
+                // $company[$key]["vac_id"]=Vacancy::where('company_id',$value->id)->pluck('name');
+            
+        }
+        $company=$company->sortBy('name');
+
+        return response()->json($company->values());
+
+        }    
 
 
 }

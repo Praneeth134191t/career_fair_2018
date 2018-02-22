@@ -42,8 +42,10 @@ Route::group(['prefix' => 'careers'], function()
     $this->get('/students','StudentController@index')->name('students');
     $this->get('/students_1','StudentController@index_1')->name('students_1');
     $this->get('/students/search','StudentSearchController@search')->name('stdSearch');
+
     $this->get('/students/search_1','StudentSearchController@search_1')->name('stdSearch_1');
     $this->get('/companies','CompanyController@index')->name('companies');
+    $this->get('/companies/search','CompanyController@search')->name('comSearch');
     $this->get('/profileimage/{filename}', 'UserController@getUserImage')->name('profile.image');
     $this->get('/cv/{filename}', 'UserController@getUserCV')->name('profile.cv');
     $this->get('/students/{id}/{count?}','StudentController@viewStudent')->name('students_view');

@@ -26,7 +26,7 @@
     <meta name="twitter:card" content="" />
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="shortcut icon" href="favicon.ico"> 
+    <link rel="shortcut icon" href="/intecs-images/logo2.png" type="image/x-icon"> 
 
     <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <!-- Animate.css -->

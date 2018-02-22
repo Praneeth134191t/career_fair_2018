@@ -64,7 +64,7 @@
                             </ul>
                         </div>
                         <div class="col-md-12 text-center">
-                            <a style="text-decoration: none;background-color: #D3D3D3;color: black" class="cv-btn" href="{{route('students_1')}}">View Current Batch</a>
+                            <a style="text-decoration: none;background-color: #D3D3D3;color: black" class="cv-btn" href="{{route('students_1')}}">View Previous Batch</a>
                         </form>
                         </div>
                         </div>
