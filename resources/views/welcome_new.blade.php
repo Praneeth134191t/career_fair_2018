@@ -46,9 +46,39 @@
                 <div class="text-inner">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2" >
-
                             <h1 class="to-animate">FIT Future Careers 2018</h1>
                             <h2 class="to-animate" style="font-weight: bold">The in-house recruitment program of the Faculty of Information Technology, University of Moratuwa!</h2>
+                            <h2  class="to-animate" style="margin-top: -20px;font-weight: bold;"> 04 <sup>th</sup> of May 2018 8:30 AM Onwards</h2>
+                            <div id="demo" style="margin-top: -50px">
+                            <hr class="to-animate">
+                            <div class="row to-animate">
+                                <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3   text-right" >
+                                    <div>
+                                        <p style="margin-bottom: -5px"> Days </p>
+                                        <h1 id="days"></h1>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3 ">
+                                    <div>
+                                        <p style="margin-bottom: -5px"> hours </p>
+                                        <h1 id="hours"></h1>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+                                    <div>
+                                        <p style="margin-bottom: -5px"> Minutes </p>
+                                        <h1 id="minutes"></h1>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3 text-left">
+                                    <div>
+                                        <p style="margin-bottom: -5px"> Seconds </p>
+                                        <h1 id="seconds"></h1>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <hr class="to-animate">
+                            </div>
                             <div class="call-to-action">
                                 <a href="{{route('students')}}" class="demo to-animate">Students</a>
                                 <a href="{{route('companies')}}" class="demo to-animate">Companies</a>
@@ -181,110 +211,114 @@
     </section>
 
     <hr>
-<!--     <section id="fh5co-sponsors" data-section="sponsors">
+    <section id="fh5co-sponsors" data-section="sponsors">
         <div class="fh5co-sponsors">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 section-heading text-center">
                         <h2 class="to-animate">Sponsors</h2>
                     </div>
-                </div>
-                <hr>
-                <h4 class="text-center to-animate"> Gold Sponsors</h4>
+                </div> 
                 <div class="row">
-                     <div class="col-md-2 col-sm-3 col-xs-6 col-sm-offset-0 col-md-offset-1">
+                    <div class="col-md-2 col-sm-3 col-xs-6 col-sm-offset-2 col-md-offset-2">
+                        <br>
+                        <h4 class="text-center to-animate"> Platinum Sponsor</h4>
                         <div class="partner-logo to-animate-2">
-                            <img src="{{ url('/images_2018/logo5.png') }}" alt="Partners" class="img-responsive">
+                            <img src="{{ url('/images_2018/creative_300.png') }}" alt="Partners" class="img-responsive">
                         </div>
-                     </div>
-
-                    <div class="col-md-2 col-sm-3 col-xs-6">
+                    </div>                    
+                    <div class="col-md-2 col-sm-3 col-xs-6 col-sm-offset-1 col-md-offset-1">
+                        <h4 class="text-center to-animate"> <b>Strategic Sponsors</b></h4>
                         <div class="partner-logo to-animate-2">
-                            <img src="{{ url('/images_2018/logo5.png') }}" alt="Partners" class="img-responsive">
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6">
-                        <div class="partner-logo to-animate-2">
-                            <img src="{{ url('/images_2018/logo5.png') }}" alt="Partners" class="img-responsive">
+                            <img src="{{ url('/images_2018/dialog_300.png') }}" alt="Partners" class="img-responsive">
                         </div>
                     </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6">
+                    <div class="col-md-2 col-sm-3 col-xs-6 col-sm-offset-1 col-md-offset-1">
+                        <br>
+                        <h4 class="text-center to-animate"> Gold Sponsor</h4>
                         <div class="partner-logo to-animate-2">
-                            <img src="{{ url('/images_2018/logo5.png') }}" alt="Partners" class="img-responsive">
+                            <img src="{{ url('/images_2018/ifs_300.png') }}" alt="Partners" class="img-responsive">
                         </div>
-                    </div>
-                    <div class="col-md-2 col-sm-12 col-xs-12">
-                        <div class="partner-logo to-animate-2">
-                            <img src="{{ url('/images_2018/logo5.png') }}" alt="Partners" class="img-responsive">
-                        </div>
-                    </div>
+                    </div>                                        
                 </div>
                 <h4 class="text-center to-animate"> Silver Sponsors</h4>
                 <div class="row">
-                    <div class="col-md-2 col-sm-3 col-xs-6 col-sm-offset-0 col-md-offset-1">
+                    <div class="col-md-2 col-sm-3 col-xs-6 col-sm-offset-2 col-md-offset-2">
                         <div class="partner-logo to-animate-2">
-                            <img src="{{ url('/images_2018/logo1.png') }}" alt="Partners" class="img-responsive">
+                            <img src="{{ url('/images_2018/gapstars_300.png') }}" alt="Partners" class="img-responsive">
                         </div>
                     </div>
 
-                    <div class="col-md-2 col-sm-3 col-xs-6">
+                    <div class="col-md-2 col-sm-3 col-xs-6 col-sm-offset-1 col-md-offset-1">
                         <div class="partner-logo to-animate-2">
-                            <img src="{{ url('/images_2018/logo2.png') }}" alt="Partners" class="img-responsive">
+                            <img src="{{ url('/images_2018/octopus_300.png') }}" alt="Partners" class="img-responsive">
                         </div>
                     </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6">
+                    <div class="col-md-2 col-sm-3 col-xs-6 col-sm-offset-1 col-md-offset-1">
                         <div class="partner-logo to-animate-2">
-                            <img src="{{ url('/images_2018/logo3.png') }}" alt="Partners" class="img-responsive">
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6">
-                        <div class="partner-logo to-animate-2">
-                            <img src="{{ url('/images_2018/logo4.png') }}" alt="Partners" class="img-responsive">
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-12 col-xs-12">
-                        <div class="partner-logo to-animate-2">
-                            <img src="{{ url('/images_2018/logo5.png') }}" alt="Partners" class="img-responsive">
+                            <img src="{{ url('/images_2018/omobio_300.png') }}" alt="Partners" class="img-responsive">
                         </div>
                     </div>
                 </div>
                 <h4 class="text-center to-animate"> Co Sponsors</h4>
                 <div class="row">
-                    <div class="col-md-2 col-sm-3 col-xs-6 col-sm-offset-0 col-md-offset-1">
+                    <div class="col-md-2 col-sm-3 col-xs-6 col-sm-offset-2 col-md-offset-2">
                         <div class="partner-logo to-animate-2">
-                            <img src="{{ url('/images_2018/logo1.png') }}" alt="Partners" class="img-responsive">
+                            <img src="{{ url('/images_2018/RN_300.png') }}" alt="Partners" class="img-responsive">
                         </div>
                     </div>
 
-                    <div class="col-md-2 col-sm-3 col-xs-6">
+                    <div class="col-md-2 col-sm-3 col-xs-6 col-sm-offset-1 col-md-offset-1">
                         <div class="partner-logo to-animate-2">
-                            <img src="{{ url('/images_2018/logo2.png') }}" alt="Partners" class="img-responsive">
+                            <img src="{{ url('/images_2018/zillione_300.png') }}" alt="Partners" class="img-responsive">
                         </div>
                     </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6">
+                    <div class="col-md-2 col-sm-3 col-xs-6 col-sm-offset-1 col-md-offset-1">
                         <div class="partner-logo to-animate-2">
-                            <img src="{{ url('/images_2018/logo3.png') }}" alt="Partners" class="img-responsive">
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-3 col-xs-6">
-                        <div class="partner-logo to-animate-2">
-                            <img src="{{ url('/images_2018/logo4.png') }}" alt="Partners" class="img-responsive">
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-12 col-xs-12">
-                        <div class="partner-logo to-animate-2">
-                            <img src="{{ url('/images_2018/logo5.png') }}" alt="Partners" class="img-responsive">
+                            <img src="{{ url('/images_2018/zone_300.png') }}" alt="Partners" class="img-responsive">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
 
 
 @endsection
 @section('scr')
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("may 04, 2018 08:30:00").getTime();
 
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+    
+    // Find the distance between now an the count down date
+    var distance = countDownDate - now;
+    
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Output the result in an element with id="demo"
+
+    document.getElementById("days").innerHTML = ("0" + days).slice(-2);
+    document.getElementById("minutes").innerHTML = ("0" + minutes).slice(-2);
+    document.getElementById("hours").innerHTML = ("0" + hours).slice(-2);
+    document.getElementById("seconds").innerHTML = ("0" + seconds).slice(-2);
+    
+    // If the count down is over, write some text 
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").style.display = 'none';
+    }
+}, 1000);
+</script>
     
         <script type="text/javascript">
         $(function() {

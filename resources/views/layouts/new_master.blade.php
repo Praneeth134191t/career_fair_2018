@@ -80,7 +80,7 @@
                         <li><a href="" data-nav-section="explore" ><span>About us</span></a></li>
                         <!-- <li><a href="" data-nav-section="social" ><span>Social</span></a></li> -->
                         <li><a href="" data-nav-section="talents" ><span>Talents</span></a></li>
-                        <!-- <li><a href="" data-nav-section="sponsors"><span>Sponsors</span></a></li> -->
+                        <li><a href="" data-nav-section="sponsors"><span>Sponsors</span></a></li>
                         @endif
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
