@@ -48,7 +48,7 @@
                         <div class="col-md-8 col-md-offset-2" >
                             <h1 class="to-animate">FIT Future Careers 2018</h1>
                             <h2 class="to-animate" style="font-weight: bold">The in-house recruitment program of the Faculty of Information Technology, University of Moratuwa!</h2>
-                            <h2  class="to-animate" style="margin-top: -20px;font-weight: bold;"> 04 <sup>th</sup> of May 2018 8:30 AM Onwards</h2>
+                            <h2  class="to-animate" style="margin-top: -20px;font-weight: bold;"> 04 <sup>th</sup> of May 2018 8:30 AM onwards</h2>
                             <div id="demo" style="margin-top: -50px">
                             <hr class="to-animate">
                             <div class="row to-animate">
@@ -228,7 +228,7 @@
                         </div>
                     </div>                    
                     <div class="col-md-2 col-sm-3 col-xs-6 col-sm-offset-1 col-md-offset-1">
-                        <h4 class="text-center to-animate"> <b>Strategic Sponsors</b></h4>
+                        <h4 class="text-center to-animate"> <b>Strategic Sponsor</b></h4>
                         <div class="partner-logo to-animate-2">
                             <img src="{{ url('/images_2018/dialog_300.png') }}" alt="Partners" class="img-responsive">
                         </div>
@@ -260,7 +260,7 @@
                         </div>
                     </div>
                 </div>
-                <h4 class="text-center to-animate"> Co Sponsors</h4>
+                <h4 class="text-center to-animate"> Co-Sponsors</h4>
                 <div class="row">
                     <div class="col-md-2 col-sm-3 col-xs-6 col-sm-offset-2 col-md-offset-2">
                         <div class="partner-logo to-animate-2">
